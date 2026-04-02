@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission — AI4DeafBlind</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADdElEQVR4nO2Vz2tcVRTHv+fcO/N+3PfezCTNaJrEloRmGtRqTbYFUdCNmyJdqHRtpf0fhv4Diii6EhHciT8oLhSl2pBNoVb7g8RiQ9GiGFqrTDLJzLx373ExM+ElJiS46WY+cN+7cO/53u859zweMGDAgAEPGdrHWv8t3YeAQPI/dPeKAQAoAHoPY3qXPao39qO/yY4HMSu8dfZN7+NvLkRhKYs7zKLW0sbpc6fXzpx5IxVxeTNANztLRGBiPPf8K+bXm0vB6uofiOODGJ2ebC0sfLbmnIPI1kLkyyxT47UXG63GSZvZJzKbTTjnEmYKAYFzsqaY/9FaLXte8NWF85+/M/f6XAoATIRDE1MvrTWbr9nMzmS2U7XOheheF5h5Qxf0PYZaDjx/frL27PuXLn3UzhtgArlSXLnasZ3j4gSg7n338yOi3lSgWKFY8H4IveBLIpVttNef7qTtl62z3QwJoFxxBQIIICIoFjxMjk9P/7R0+RcArHMVAGu1CIsnQXBEpCE9lZwWgcQ5J632xmyapbMEQuYyQESIyFHXKTERnAioZ0YEVkiICPeHEtPo63HfgEBQTsqfMrMGoESE+2K5wb1GUoqVLcflk4fHJo4WdfFuLhEWATVbGTETNZspvfrCGE084iNNRXme9/3FyxdXejqbBhwAeMrcBCgDoLqud/xyrECgC/ra73/+9sWNWzdu+V7wSc+scyLwi4zZWglpajEzmWDh2gPcXVmHV9Rg6Cu5hJA3QIvLPy4XWC8BYgWS7XQ6IFaxImPM2yJCAHi4NPKBYu0EAhGIV2QcO5LAWocjjxmEvpJWx0IrRimufN3tKrjtyhoADo6MnzUmEd8PxfdD6wdhFgQmC4Iw84PQ+oGRSnn4ar1eL/avhABUh0bfDcNYgiDMPN9kID8NwygF+5kuBDYMjVTKB77tNTNvP7wP1+vf6eqBsffiqNSIokSMiSUMYzEmlihKZKgyMl+rPXW4v79XSnXqVL1YHX70wzgqOWNiieNETBhLHCWSxCU7VKnOz8wcP5Trpc2m+S8EnHjmxOjK6l9T66vNkU7a8b2Ctx7E0Z3btxevO+f6sVuahIhw7Ojc43837s+0N1olB7JxZO4lUeXO9Z+vLO4Wt2Ml9ljfyfiWzPYbt9fPiHNzwS7Nsw3eZmS/cQMGDBjwcPgXN2JS6dUrFXwAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ai4deafblind.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html#hero" class="nav-logo" aria-label="AI4DeafBlind — home">AI4<span>DeafBlind</span></a>
+  <button type="button" class="nav-toggle" id="nav-menu-button" aria-expanded="false" aria-controls="primary-nav-list">
+    <span class="nav-toggle-bars" aria-hidden="true"></span>
+    <span class="visually-hidden">Open menu</span>
+  </button>
+  <ul id="primary-nav-list" class="nav-list" role="list">
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#technology">Technology</a></li>
+    <li class="nav-dropdown-wrap">
+      <button type="button" class="nav-dropdown-trigger" id="nav-articles-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-articles-menu">
+        Articles
+        <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="nav-articles-menu" class="nav-dropdown-panel" role="list">
+        <li><a href="speech2braille-article.html">Speech2Braille</a></li>
+        <li><a href="braille2speech-article.html">Braille2Speech</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#meet-the-team">Team</a></li>
+  </ul>
+</nav>
+    <main id="main" class="subpage-main">
+      <div class="section-label" aria-hidden="true">Our Mission</div>
+      <h1>Breaking the wall of <em>isolation</em></h1>
+      <p>
+        DeafBlind individuals face profound isolation — unable to hear or see, yet possessing the full capacity for thought, feeling, and connection. AI4DeafBlind exists to dismantle that barrier using affordable, offline-capable AI that works in the real world — not just in a lab.
+      </p>
+      <p>
+        The full story, technology pipeline, and team are on our <a href="index.html#hero">home page</a>.
+      </p>
+    </main>
+
+<footer role="contentinfo">
+  <div class="footer-logo">AI4<span>DeafBlind</span>.org</div>
+  <p>© 2026 AI4DeafBlind. Open-source, open-hearted.</p>
+  <p>Seattle, WA, USA</p>
+</footer>
+<script>
+(function () {
+  const nav = document.querySelector('.site-nav');
+  const btn = document.getElementById('nav-menu-button');
+  const list = document.getElementById('primary-nav-list');
+  const articlesBtn = document.getElementById('nav-articles-btn');
+  const articlesWrap = articlesBtn && articlesBtn.closest('.nav-dropdown-wrap');
+  if (!nav || !btn || !list) return;
+  const label = btn.querySelector('.visually-hidden');
+  function isDesktopNav() {
+    return window.matchMedia('(min-width: 901px)').matches;
+  }
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open);
+    if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+    if (articlesBtn && !isDesktopNav()) {
+      articlesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  }
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  list.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      setOpen(false);
+    });
+  });
+  if (articlesWrap && articlesBtn) {
+    articlesWrap.addEventListener('mouseenter', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('mouseleave', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'false');
+    });
+    articlesWrap.addEventListener('focusin', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('focusout', function (e) {
+      if (!isDesktopNav()) return;
+      if (!articlesWrap.contains(e.relatedTarget)) {
+        articlesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>

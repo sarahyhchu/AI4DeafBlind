@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4DeafBlind — Bridging Silence and Darkness</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADdElEQVR4nO2Vz2tcVRTHv+fcO/N+3PfezCTNaJrEloRmGtRqTbYFUdCNmyJdqHRtpf0fhv4Diii6EhHciT8oLhSl2pBNoVb7g8RiQ9GiGFqrTDLJzLx373ExM+ElJiS46WY+cN+7cO/53u859zweMGDAgAEPGdrHWv8t3YeAQPI/dPeKAQAoAHoPY3qXPao39qO/yY4HMSu8dfZN7+NvLkRhKYs7zKLW0sbpc6fXzpx5IxVxeTNANztLRGBiPPf8K+bXm0vB6uofiOODGJ2ebC0sfLbmnIPI1kLkyyxT47UXG63GSZvZJzKbTTjnEmYKAYFzsqaY/9FaLXte8NWF85+/M/f6XAoATIRDE1MvrTWbr9nMzmS2U7XOheheF5h5Qxf0PYZaDjx/frL27PuXLn3UzhtgArlSXLnasZ3j4gSg7n338yOi3lSgWKFY8H4IveBLIpVttNef7qTtl62z3QwJoFxxBQIIICIoFjxMjk9P/7R0+RcArHMVAGu1CIsnQXBEpCE9lZwWgcQ5J632xmyapbMEQuYyQESIyFHXKTERnAioZ0YEVkiICPeHEtPo63HfgEBQTsqfMrMGoESE+2K5wb1GUoqVLcflk4fHJo4WdfFuLhEWATVbGTETNZspvfrCGE084iNNRXme9/3FyxdXejqbBhwAeMrcBCgDoLqud/xyrECgC/ra73/+9sWNWzdu+V7wSc+scyLwi4zZWglpajEzmWDh2gPcXVmHV9Rg6Cu5hJA3QIvLPy4XWC8BYgWS7XQ6IFaxImPM2yJCAHi4NPKBYu0EAhGIV2QcO5LAWocjjxmEvpJWx0IrRimufN3tKrjtyhoADo6MnzUmEd8PxfdD6wdhFgQmC4Iw84PQ+oGRSnn4ar1eL/avhABUh0bfDcNYgiDMPN9kID8NwygF+5kuBDYMjVTKB77tNTNvP7wP1+vf6eqBsffiqNSIokSMiSUMYzEmlihKZKgyMl+rPXW4v79XSnXqVL1YHX70wzgqOWNiieNETBhLHCWSxCU7VKnOz8wcP5Trpc2m+S8EnHjmxOjK6l9T66vNkU7a8b2Ctx7E0Z3btxevO+f6sVuahIhw7Ojc43837s+0N1olB7JxZO4lUeXO9Z+vLO4Wt2Ml9ljfyfiWzPYbt9fPiHNzwS7Nsw3eZmS/cQMGDBjwcPgXN2JS6dUrFXwAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ai4deafblind.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="#hero" class="nav-logo" aria-label="AI4DeafBlind — go to top">AI4<span>DeafBlind</span></a>
+  <button type="button" class="nav-toggle" id="nav-menu-button" aria-expanded="false" aria-controls="primary-nav-list">
+    <span class="nav-toggle-bars" aria-hidden="true"></span>
+    <span class="visually-hidden">Open menu</span>
+  </button>
+  <ul id="primary-nav-list" class="nav-list" role="list">
+    <li><a href="#technology">Technology</a></li>
+    <li class="nav-dropdown-wrap">
+      <button type="button" class="nav-dropdown-trigger" id="nav-articles-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-articles-menu">
+        Articles
+        <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="nav-articles-menu" class="nav-dropdown-panel" role="list">
+        <li><a href="speech2braille-article.html">Speech2Braille</a></li>
+        <li><a href="braille2speech-article.html">Braille2Speech</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#meet-the-team">Team</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section id="hero" aria-label="Hero — AI4DeafBlind introduction">
+  <div class="hero-left">
+    <div class="hero-tag" aria-hidden="true">AI4DeafBlind</div>
+    <h1>A <em>voice</em> for<br>every <em>touch.</em></h1>
+    <p class="hero-body">
+      We build AI-powered assistive technology for the DeafBlind community — enabling true two-way conversation through Speech2Braille and Braille2Speech, running entirely offline on affordable hardware.
+    </p>
+    <div class="cta-group">
+      <a href="#technology" class="btn-primary">Our Technology</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+  <div class="hero-right" aria-hidden="true">
+    <div class="hero-right-inner">
+      <div class="braille-visual" id="brailleGrid"></div>
+    </div>
+    <div class="hero-right-text">
+      <p>Our vision</p>
+      <div class="stat" style="font-size:1.4rem; line-height:1.35; letter-spacing:-0.02em;">"A world where DeafBlind individuals experience connection, autonomy, and engagement."</div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- MISSION -->
+<section id="mission" aria-labelledby="mission-heading">
+  <div class="reveal">
+    <div class="section-label" aria-hidden="true">Our Mission</div>
+    <h2 id="mission-heading">Breaking the<br>wall of <em>isolation</em></h2>
+  </div>
+  <div class="reveal">
+    <p class="mission-body">
+      DeafBlind individuals face profound isolation — unable to hear or see, yet possessing the full capacity for thought, feeling, and connection. AI4DeafBlind exists to dismantle that barrier using affordable, offline-capable AI that works in the real world — not just in a lab.
+    </p>
+    <aside class="mission-callout" aria-label="Key statistic">
+      <div class="mission-callout-stat">15.8M – 166M</div>
+      <p class="mission-callout-desc">people worldwide live with deafblindness — a vast, largely hidden community whose needs remain critically underserved.</p>
+      <a href="https://wfdb.eu/deafblindness-in-the-world/" target="_blank" rel="noopener noreferrer" class="mission-callout-source">Source: World Federation of the Deafblind (WFDB)</a>
+    </aside>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section id="technology" aria-labelledby="technology-heading">
+
+  <div class="tech-section-header reveal">
+    <div class="tech-header-left">
+      <div class="section-label" aria-hidden="true">Our Technology</div>
+      <h2 id="technology-heading">A fully <em>bidirectional</em><br>conversation</h2>
+      <p style="color:var(--ink); font-size:1rem; line-height:1.7; margin-top:1rem;">
+        Anyone can speak to a DeafBlind person — and any DeafBlind person can speak back.
+      </p>
+    </div>
+    <ul class="tech-header-bullets">
+      <li>Fine-tuning speech recognition models and advancing the acoustic frontier for low-resource Indonesian language processing.</li>
+      <li>Optimizing inference pipelines for edge deployment — squeezing Whisper and Piper into a Pi while keeping latency under one second.</li>
+      <li>Curating training corpora from GigaSpeech2 and evaluating robustness across diverse speakers using Mozilla Common Voice ID v7.0.</li>
+    </ul>
+  </div>
+
+  <dl class="mission-stats reveal">
+    <div class="stat-box">
+      <dt class="stat-label">Word Error Rate — Whisper Tiny (ID)</dt>
+      <dd class="stat-num">&lt;20%</dd>
+    </div>
+    <div class="stat-box">
+      <dt class="stat-label">Real-Time Factor on Raspberry Pi 5</dt>
+      <dd class="stat-num">&lt;1s</dd>
+    </div>
+    <div class="stat-box">
+      <dt class="stat-label">Internet required — Fully offline</dt>
+      <dd class="stat-num">0G</dd>
+    </div>
+    <div class="stat-box">
+      <dt class="stat-label">Target device cost — Pi 5 platform</dt>
+      <dd class="stat-num">$150</dd>
+    </div>
+  </dl>
+
+  <!-- SPEECH2BRAILLE BLOCK -->
+  <div class="pipeline-block reveal">
+    <div class="pipeline-info">
+      <div class="section-label" aria-hidden="true">Speech2Braille</div>
+      <h3>From spoken word<br>to <em>fingertip</em></h3>
+      <p>A sighted person speaks Indonesian. In under one second, the words appear as Braille on the DeafBlind person's display — no internet, no cloud, no intermediary.</p>
+      <ol class="tech-pipeline" aria-label="Speech2Braille pipeline steps">
+        <li class="tech-step">
+          <div class="tech-icon" aria-hidden="true">🎙️<div class="tech-step-num">1</div></div>
+          <h4>Speech Input</h4>
+          <p>Spoken Indonesian via microphone</p>
+        </li>
+        <li class="tech-step">
+          <div class="tech-icon" aria-hidden="true">🤖<div class="tech-step-num">2</div></div>
+          <h4>Whisper Tiny</h4>
+          <p>Fine-tuned ASR, &lt;20% WER, &lt;1s RTF</p>
+        </li>
+        <li class="tech-step">
+          <div class="tech-icon" aria-hidden="true">⠿<div class="tech-step-num">3</div></div>
+          <h4>Liblouis</h4>
+          <p>Indonesian Braille translation</p>
+        </li>
+        <li class="tech-step">
+          <div class="tech-icon" aria-hidden="true">🖐️<div class="tech-step-num">4</div></div>
+          <h4>Braille Display</h4>
+          <p>BRLTTY → any Braille display</p>
+        </li>
+      </ol>
+      <p class="pipeline-read-more">
+        <a href="speech2braille-article.html" class="btn-outline" aria-label="Read more about the Speech2Braille pipeline">Read more</a>
+      </p>
+    </div>
+    <div class="pipeline-visual s2b-bg" aria-hidden="true">
+      <div class="pipeline-visual-inner">
+        <div class="s2b-dots" id="s2bDots"></div>
+      </div>
+      <div class="pipeline-visual-label">
+        <p>Training data</p>
+        <div class="vis-stat">GigaSpeech2</div>
+        <p style="margin-top:0.35rem; font-size:0.6rem;">Evaluated · Mozilla Common Voice ID v7.0</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRAILLE2SPEECH BLOCK (reversed) -->
+  <div class="pipeline-block reverse reveal">
+    <div class="pipeline-info">
+      <div class="section-label" aria-hidden="true">Braille2Speech</div>
+      <h3>From <em>fingertip</em><br>to spoken word</h3>
+      <p>A DeafBlind person types on their Perkins Keyboard. Their words are instantly spoken aloud — giving them a real voice in any conversation, without any special training required of listeners.</p>
+      <ol class="tech-pipeline" aria-label="Braille2Speech pipeline steps">
+        <li class="tech-step">
+          <div class="tech-icon" aria-hidden="true">⌨️<div class="tech-step-num">1</div></div>
+          <h4>Perkins Key</h4>
+          <p>Braille typed on 6-key Perkins input</p>
+        </li>
+        <li class="tech-step">
+          <div class="tech-icon" aria-hidden="true">⠿<div class="tech-step-num">2</div></div>
+          <h4>Liblouis</h4>
+          <p>Braille decoded to Indonesian text</p>
+        </li>
+        <li class="tech-step">
+          <div class="tech-icon" aria-hidden="true">🗣️<div class="tech-step-num">3</div></div>
+          <h4>Piper TTS</h4>
+          <p>Neural text-to-speech on-device</p>
+        </li>
+        <li class="tech-step">
+          <div class="tech-icon" aria-hidden="true">🔊<div class="tech-step-num">4</div></div>
+          <h4>Audio Output</h4>
+          <p>Natural voice heard by the room</p>
+        </li>
+      </ol>
+      <p class="pipeline-read-more">
+        <a href="braille2speech-article.html" class="btn-outline" aria-label="Read more about the Braille2Speech pipeline">Read more</a>
+      </p>
+    </div>
+    <div class="pipeline-visual b2s-bg" aria-hidden="true">
+      <div class="pipeline-visual-inner">
+        <div class="b2s-visual-wrap">
+          <div class="braille-chars">⠓⠑⠇⠇⠕</div>
+          <div class="perkins-keys">
+            <div class="p-key"></div>
+            <div class="p-key"></div>
+            <div class="p-key"></div>
+            <div class="p-key space-bar"></div>
+            <div class="p-key"></div>
+            <div class="p-key"></div>
+            <div class="p-key"></div>
+          </div>
+          <div class="sound-waves">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pipeline-visual-label">
+        <p>TTS Engine</p>
+        <div class="vis-stat">Piper TTS</div>
+        <p style="margin-top:0.35rem; font-size:0.6rem;">Natural Indonesian voice · Fully on-device</p>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+<!-- FIELD TEST -->
+<section id="fieldtest" aria-labelledby="fieldtest-heading">
+  <div class="reveal">
+    <div class="section-label" aria-hidden="true">Pilot Program</div>
+    <h2 id="fieldtest-heading">Testing with <em>real users</em><br>in the field</h2>
+    <p>
+      Our first field deployment is with Helen Keller Indonesia at their school in Yogyakarta — putting our bidirectional smart speaker directly into the hands of the DeafBlind community.
+    </p>
+    <p>
+      Caregivers, teachers, and family members speak naturally in Indonesian — DeafBlind students read the words on their Braille display in real time. And when the DeafBlind student responds via their Perkins Keyboard, their words are spoken aloud for everyone to hear. A true conversation, at last.
+    </p>
+    <div class="partner-badge">
+      <div class="badge-icon">🤝</div>
+      <div class="partner-badge-text">
+        <p>Field Partner</p>
+        <strong>Helen Keller Indonesia — Yogyakarta</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="fieldtest-visual reveal">
+    <div class="timeline-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h4>Device Finalization</h4>
+        <p>Hardware assembly and software packaging on Raspberry Pi 5</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h4>Partner Briefing</h4>
+        <p>Coordination with Helen Keller Indonesia's teaching staff and caregivers</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h4>Yogyakarta Field Test</h4>
+        <p>Live deployment at the school — real users, real conversations, real impact</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h4>Evaluation &amp; Iteration</h4>
+        <p>Collect feedback, measure usability, refine the system for broader rollout</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h4>Open Source Release</h4>
+        <p>Publishing code, Indonesian Braille table, and fine-tuned model weights</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" aria-labelledby="publications-heading">
+  <div class="reveal">
+    <div class="section-label" aria-hidden="true">Research</div>
+    <h2 id="publications-heading">Sharing what<br>we <em>discover</em></h2>
+  </div>
+
+  <div class="pub-list">
+    <div class="pub-item reveal">
+      <div class="pub-num">01</div>
+      <div class="pub-info">
+        <h4>Speech2Braille: Real-Time Indonesian ASR for DeafBlind Assistive Technology on Edge Devices</h4>
+        <p>Technical Journal · Whisper Fine-tuning · GigaSpeech2 · Mozilla Common Voice ID v7.0</p>
+      </div>
+      <div class="pub-status upcoming">Upcoming</div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-num">02</div>
+      <div class="pub-info">
+        <h4>Braille2Speech: Perkins Keyboard to Natural Voice via Liblouis and Piper TTS on Raspberry Pi</h4>
+        <p>Technical Journal · Piper TTS · Perkins Input · Indonesian Braille · Edge Inference</p>
+      </div>
+      <div class="pub-status upcoming">Upcoming</div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-num">03</div>
+      <div class="pub-info">
+        <h4>Extending Liblouis with Indonesian Braille: Methodology and Open-Source Contribution</h4>
+        <p>Open Source Publication · Braille Table · Liblouis · BRLTTY · Bidirectional Translation</p>
+      </div>
+      <div class="pub-status upcoming">Upcoming</div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-num">04</div>
+      <div class="pub-info">
+        <h4>Offline AI for Accessibility: Lessons from Deploying Bidirectional Speech–Braille in Yogyakarta</h4>
+        <p>Disability Studies · Social Impact · Field Research · Helen Keller Indonesia</p>
+      </div>
+      <div class="pub-status inprogress">In Progress</div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-num">05</div>
+      <div class="pub-info">
+        <h4>Low-Cost, High-Impact: The Case for Raspberry Pi in Disability Assistive Technology</h4>
+        <p>Disability Publication · Affordability · Emerging Markets · Global South</p>
+      </div>
+      <div class="pub-status inprogress">In Progress</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="reveal">
+    <div class="section-label" aria-hidden="true">Get In Touch</div>
+    <h2 id="contact-heading">Let's build<br>this <em>together</em></h2>
+    <p>
+      Researchers, clinicians, disability advocates, and institutions — we welcome collaboration, feedback, and partnership to bring Speech2Braille and Braille2Speech to more communities around the world.
+    </p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmnP5cYSkjuuAj1AGhKD4Cj5qEFUGH7TU25dMYUXwCNuSMYg/viewform" target="_blank" rel="noopener noreferrer" class="contact-email" aria-label="Get in touch via our contact form">Get In Touch</a>
+  </div>
+</section>
+
+<!-- MEET THE TEAM -->
+<section id="meet-the-team" aria-labelledby="meet-team-heading">
+  <div class="reveal">
+    <div class="section-label" aria-hidden="true">The People</div>
+    <h2 id="meet-team-heading">Meet the <em>team</em></h2>
+  </div>
+
+  <!-- Row 1: 4 cards -->
+  <div class="people-grid reveal">
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/kimfulim/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Kim-Fu Lim on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/kim-fu-lim.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Founder</div>
+          <div class="person-name">Kim-Fu Lim</div>
+          <div class="person-edu">Ex-Accenture · Ex-Amazon</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/shih-lien-lu-7486ab/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Dr. Shih-Lien (Linus) Lu on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/shih-lien-linus-lu.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Professor · Huie-Rogers Research Fellow</div>
+          <div class="person-name">Dr. Shih-Lien (Linus) Lu</div>
+          <div class="person-edu">Memory Technologies · Circuits & Architecture · HW Security</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/kamahori/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Keisuke Kamahori on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/keisuke-kamahori.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">CS PhD Student · University of Washington</div>
+          <div class="person-name">Keisuke Kamahori</div>
+          <div class="person-edu">Computer Systems and Architecture for LLMs</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/jonathanychu/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Jonathan Chu on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/jonathan-chu.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">CSE Intern</div>
+          <div class="person-name">Jonathan Chu</div>
+          <div class="person-edu">Native ML Deployment</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Row 2: 3 cards, centered -->
+  <div class="people-row-2 reveal">
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/rio-kisna/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Rio Kisna on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/rio-kisna.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">KreasiTech Sr. Project Manager</div>
+          <div class="person-name">Rio Kisna</div>
+          <div class="person-edu">Mobile Applications · Fullstack Developer</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/manila-kristin/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Manila Kristin on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/manila-kristin.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">KreasiTech Founder</div>
+          <div class="person-name">Manila Kristin</div>
+          <div class="person-edu">Fullstack Developer · Accessibility Advocate</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/rizaleow/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Rizal Rinaldi on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/rizal-rinaldi.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">KreasiTech Fullstack Developer</div>
+          <div class="person-name">Rizal Rinaldi</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/sarah-chu18/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Sarah Chu on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/sarah-chu.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">UX Designer</div>
+          <div class="person-name">Sarah Chu</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/raymondtsai61931/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Raymond Tsai on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/raymond-tsai.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Software and Hardware Integration</div>
+          <div class="person-name">Raymond Tsai</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-logo">AI4<span>DeafBlind</span>.org</div>
+  <p>© 2026 AI4DeafBlind. Open-source, open-hearted.</p>
+  <p>Seattle, WA, USA</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Hero braille dot grid
+const grid = document.getElementById('brailleGrid');
+const litPositions = new Set([1,4,7,8,13,16,19,22,25,28,31,34,37,40,43,46]);
+for (let i = 0; i < 60; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'b-dot' + (litPositions.has(i) ? ' lit' : '');
+  if (litPositions.has(i)) dot.style.animationDelay = (Math.random() * 2) + 's';
+  grid.appendChild(dot);
+}
+
+// Speech2Braille section dot grid
+const s2bGrid = document.getElementById('s2bDots');
+const s2bLit = new Set([0,3,5,9,11,14,17,21,23,26,30,32,35,38,42,44,47,50,53,57]);
+for (let i = 0; i < 60; i++) {
+  const dot = document.createElement('div');
+  dot.className = 's2b-dot' + (s2bLit.has(i) ? ' lit' : '');
+  if (s2bLit.has(i)) dot.style.animationDelay = (Math.random() * 2.5) + 's';
+  s2bGrid.appendChild(dot);
+}
+
+// Intersection Observer — reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Mobile navigation — keyboard accessible toggle
+(function () {
+  const nav = document.querySelector('.site-nav');
+  const btn = document.getElementById('nav-menu-button');
+  const list = document.getElementById('primary-nav-list');
+  const articlesBtn = document.getElementById('nav-articles-btn');
+  const articlesWrap = articlesBtn && articlesBtn.closest('.nav-dropdown-wrap');
+  if (!nav || !btn || !list) return;
+  const label = btn.querySelector('.visually-hidden');
+  function isDesktopNav() {
+    return window.matchMedia('(min-width: 901px)').matches;
+  }
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open);
+    if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+    if (articlesBtn && !isDesktopNav()) {
+      articlesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  }
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  list.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      setOpen(false);
+    });
+  });
+  if (articlesWrap && articlesBtn) {
+    articlesWrap.addEventListener('mouseenter', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('mouseleave', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'false');
+    });
+    articlesWrap.addEventListener('focusin', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('focusout', function (e) {
+      if (!isDesktopNav()) return;
+      if (!articlesWrap.contains(e.relatedTarget)) {
+        articlesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>

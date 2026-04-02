@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Braille2Speech: Empowering DeafBlind Students to Be Heard | AI4DeafBlind.org</title>
+  <meta name="description" content="AI4DeafBlind.org's Braille2Speech pipeline converts Perkins keyboard input into spoken Indonesian using Liblouis and Piper TTS — running offline on a Raspberry Pi. Discover how this technology empowers DeafBlind students at Helen Keller Indonesia to actively participate in classroom conversations." />
+  <meta name="keywords" content="Braille2Speech, DeafBlind technology, Piper TTS, Liblouis, Perkins keyboard, Braille translation, assistive technology, offline TTS, Raspberry Pi, Helen Keller Indonesia, WATAP, KreasiTech, AI4DeafBlind, bidirectional communication, DeafBlind education, Stronger Together, World Conference on Deafblindness 2027" />
+  <meta name="author" content="AI4DeafBlind.org" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.ai4deafblind.org/braille2speech-pipeline" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Braille2Speech: Giving DeafBlind Students a Voice in the Classroom" />
+  <meta property="og:description" content="When a student types on a Perkins keyboard, the Braille2Speech pipeline speaks their words aloud — entirely offline on a Raspberry Pi. AI4DeafBlind.org's second pipeline completes the two-way communication loop at Helen Keller Indonesia." />
+  <meta property="og:site_name" content="AI4DeafBlind.org" />
+  <meta property="article:published_time" content="2025-04-10" />
+  <meta property="article:author" content="AI4DeafBlind.org Team" />
+  <meta property="article:tag" content="Braille2Speech, DeafBlind, Piper TTS, Liblouis, Assistive Technology, Indonesia, WATAP, Empowerment" />
+
+  <!-- Structured Data: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Braille2Speech: Completing the Loop — Empowering DeafBlind Students to Be Heard",
+    "description": "AI4DeafBlind.org built an offline Braille2Speech pipeline that converts Perkins keyboard Braille input into spoken Indonesian using Liblouis and Piper TTS on a Raspberry Pi, enabling real-time bidirectional communication between DeafBlind students and their teachers at Helen Keller Indonesia.",
+    "author": {
+      "@type": "Organization",
+      "name": "AI4DeafBlind.org",
+      "url": "https://www.ai4deafblind.org"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI4DeafBlind.org"
+    },
+    "datePublished": "2025-04-10",
+    "keywords": ["Braille2Speech","DeafBlind","Piper TTS","Liblouis","Perkins keyboard","offline TTS","Raspberry Pi","assistive technology","Indonesia","Helen Keller","WATAP","KreasiTech","bidirectional communication"],
+    "articleSection": "Research & Innovation",
+    "about": [
+      {"@type": "Thing", "name": "Text-to-Speech Synthesis"},
+      {"@type": "Thing", "name": "Braille Translation"},
+      {"@type": "Thing", "name": "Assistive Technology"},
+      {"@type": "Thing", "name": "DeafBlind Education"}
+    ]
+  }
+  </script>
+
+  <!-- FAQ Structured Data for chatbots and AI search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Braille2Speech pipeline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Braille2Speech is an offline AI pipeline developed by AI4DeafBlind.org that converts Braille input from a Perkins keyboard into spoken Indonesian. It uses Liblouis to reverse-translate Braille into Indonesian text, then passes that text to the Piper TTS engine to generate natural speech — all running locally on a Raspberry Pi with no internet required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Braille2Speech complement Speech2Braille?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Speech2Braille converts a teacher's spoken words into Braille output for a student to read. Braille2Speech does the reverse: it converts a student's Braille keyboard input into spoken words the teacher can hear. Together, they create a fully bidirectional real-time communication loop between teachers and DeafBlind students."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What hardware does Braille2Speech run on?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Braille2Speech runs on a Raspberry Pi — an affordable, low-cost single-board computer. The Piper TTS engine is deployed locally on the device, requiring no internet connection, making it suitable for schools in Indonesia and other under-resourced environments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Liblouis and why is it used?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Liblouis is an open-source Braille translation library that supports a wide range of languages including Indonesian. In the Braille2Speech pipeline, Liblouis reverse-translates raw Braille cell output from the Perkins keyboard into readable Indonesian text, which is then passed to the Piper TTS engine for speech synthesis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Piper TTS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Piper is an open-source, fast, and locally deployable text-to-speech engine. AI4DeafBlind.org uses Piper with an Indonesian language model to convert translated Braille text into natural-sounding Indonesian speech, running entirely offline on a Raspberry Pi."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who are WATAP and KreasiTech, and what role did they play?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WATAP (Washington Assistive Technology Act Program) loaned refreshable Braille displays to the AI4DeafBlind.org team during the testing phase, enabling accurate verification of Braille translation quality. KreasiTech is an Indonesian technology company whose engineers collaborated with teams from the University of Washington and Washington State University to optimize the Braille2Speech pipeline for the Raspberry Pi."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADdElEQVR4nO2Vz2tcVRTHv+fcO/N+3PfezCTNaJrEloRmGtRqTbYFUdCNmyJdqHRtpf0fhv4Diii6EhHciT8oLhSl2pBNoVb7g8RiQ9GiGFqrTDLJzLx373ExM+ElJiS46WY+cN+7cO/53u859zweMGDAgAEPGdrHWv8t3YeAQPI/dPeKAQAoAHoPY3qXPao39qO/yY4HMSu8dfZN7+NvLkRhKYs7zKLW0sbpc6fXzpx5IxVxeTNANztLRGBiPPf8K+bXm0vB6uofiOODGJ2ebC0sfLbmnIPI1kLkyyxT47UXG63GSZvZJzKbTTjnEmYKAYFzsqaY/9FaLXte8NWF85+/M/f6XAoATIRDE1MvrTWbr9nMzmS2U7XOheheF5h5Qxf0PYZaDjx/frL27PuXLn3UzhtgArlSXLnasZ3j4gSg7n338yOi3lSgWKFY8H4IveBLIpVttNef7qTtl62z3QwJoFxxBQIIICIoFjxMjk9P/7R0+RcArHMVAGu1CIsnQXBEpCE9lZwWgcQ5J632xmyapbMEQuYyQESIyFHXKTERnAioZ0YEVkiICPeHEtPo63HfgEBQTsqfMrMGoESE+2K5wb1GUoqVLcflk4fHJo4WdfFuLhEWATVbGTETNZspvfrCGE084iNNRXme9/3FyxdXejqbBhwAeMrcBCgDoLqud/xyrECgC/ra73/+9sWNWzdu+V7wSc+scyLwi4zZWglpajEzmWDh2gPcXVmHV9Rg6Cu5hJA3QIvLPy4XWC8BYgWS7XQ6IFaxImPM2yJCAHi4NPKBYu0EAhGIV2QcO5LAWocjjxmEvpJWx0IrRimufN3tKrjtyhoADo6MnzUmEd8PxfdD+oGRSnn4ar1eL/avhABUh0bfDcNYgiDMPN9kID8NwygF+5kuBDYMjVTKB77tNTNvP7wP1+vf6eqBsffiqNSIokSMiSUMYzEmlihKZKgyMl+rPXW4v79XSnXqVL1YHX70wzgqOWNiieNETBhLHCWSxCU7VKnOz8wcP5Trpc2m+S8EnHjmxOjK6l9T66vNkU7a8b2Ctx7E0Z3btxevO+f6sVuahIhw7Ojc43837s+0N1olB7JxZO4lUeXO9Z+vLO4Wt2Ml9ljfyfiWzPYbt9fPiHNzwS7Nsw3eZmS/cQMGDBjwcPgXN2JS6dUrFXwAAAAASUVORK5CYII=">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ai4deafblind.css">
+  <link rel="stylesheet" href="article-pages.css">
+</head>
+<body class="article-page">
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html#hero" class="nav-logo" aria-label="AI4DeafBlind — home">AI4<span>DeafBlind</span></a>
+  <button type="button" class="nav-toggle" id="nav-menu-button" aria-expanded="false" aria-controls="primary-nav-list">
+    <span class="nav-toggle-bars" aria-hidden="true"></span>
+    <span class="visually-hidden">Open menu</span>
+  </button>
+  <ul id="primary-nav-list" class="nav-list" role="list">
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#technology">Technology</a></li>
+    <li class="nav-dropdown-wrap">
+      <button type="button" class="nav-dropdown-trigger" id="nav-articles-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-articles-menu">
+        Articles
+        <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="nav-articles-menu" class="nav-dropdown-panel" role="list">
+        <li><a href="speech2braille-article.html">Speech2Braille</a></li>
+        <li><a href="braille2speech-article.html">Braille2Speech</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#meet-the-team">Team</a></li>
+  </ul>
+</nav>
+
+<main id="main" class="article-page-main">
+  <div class="series-ribbon" role="note" aria-label="Article series navigation">
+    Part 2 of the Two-Way Communication Series &nbsp;·&nbsp;
+    <a href="speech2braille-article.html">Read Part 1: Speech2Braille →</a>
+  </div>
+
+  <header class="article-hero" role="banner">
+    <div class="article-hero-label">Research &amp; Innovation</div>
+    <h1>Braille2Speech:<br><em>A New Way to Be Heard</em></h1>
+    <p class="article-hero-sub">
+      When a DeafBlind student types on a Perkins keyboard, their words speak aloud — instantly, naturally, offline. AI4DeafBlind.org's Braille2Speech pipeline gives students at Helen Keller Indonesia a voice in their own classroom.
+    </p>
+    <p class="article-hero-meta" aria-label="Article metadata">
+      <span>By AI4DeafBlind.org Team</span>
+      <span>·</span>
+      <span>April 2025</span>
+      <span>·</span>
+      <span>10 min read</span>
+    </p>
+  </header>
+
+  <div class="article-container">
+    <article>
+
+      <!-- Lead -->
+      <p class="lead">
+        Being heard is fundamental to human dignity. For DeafBlind students at Helen Keller Indonesia in Yogyakarta, a new pipeline built by <strong>AI4DeafBlind.org</strong> makes it possible in a way it never was before — translating the press of Braille keys into a spoken voice, in real time, on a device that fits in a classroom and costs a fraction of commercial alternatives.
+      </p>
+
+      <!-- Section 1 -->
+      <h2>Completing the Loop: From Listening to Speaking</h2>
+
+      <p>Our first pipeline, <a href="speech2braille-article.html">Speech2Braille</a>, gave DeafBlind students the ability to receive — converting a teacher's spoken Indonesian into Braille output on a refreshable display. It was a profound step. But a classroom where only the teacher's voice is heard is not yet a conversation.</p>
+
+      <p>Braille2Speech completes the loop. It does the reverse: when a student types on a <strong>Perkins Braille keyboard</strong>, the system converts those keystrokes into spoken Indonesian — read aloud through a speaker for the teacher and anyone in the room to hear. For the first time, a DeafBlind student can answer a question, express a need, contribute an idea, or simply say they understand, without requiring a human interpreter in the room.</p>
+
+      <p>Together, Speech2Braille and Braille2Speech create a fully bidirectional, real-time communication channel between a teacher and a DeafBlind student — both pipelines running entirely offline, on affordable hardware, in a classroom with or without an internet connection.</p>
+
+      <!-- Comparison table -->
+      <table class="compare-table" aria-label="Comparison of Speech2Braille and Braille2Speech pipelines">
+        <thead>
+          <tr>
+            <th scope="col">Pipeline</th>
+            <th scope="col">Direction</th>
+            <th scope="col">Input</th>
+            <th scope="col">Output</th>
+            <th scope="col">Core Technology</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pipeline-s2b">Speech2Braille</td>
+            <td>Teacher → Student</td>
+            <td>Spoken Indonesian</td>
+            <td>Braille on refreshable display</td>
+            <td>Whisper ASR (fine-tuned)</td>
+          </tr>
+          <tr>
+            <td class="pipeline-b2s">Braille2Speech</td>
+            <td>Student → Teacher</td>
+            <td>Perkins keyboard input</td>
+            <td>Spoken Indonesian</td>
+            <td>Liblouis + Piper TTS</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Stats -->
+      <div class="stats" aria-label="Key facts about the Braille2Speech system">
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Offline operation</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Pi</div>
+          <div class="stat-label">Runs on Raspberry Pi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Bidirectional pipelines</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Org partners in testing</div>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <h2>How It Works: The Technology Inside Braille2Speech</h2>
+
+      <p>The Braille2Speech pipeline is elegant in its design: three open-source components, each doing one job precisely, chained together to convert a finger's movement into a voice in under a second.</p>
+
+      <h3>Step 1 — Perkins Keyboard Input</h3>
+      <p>The student types on a <strong>Perkins Brailler keyboard</strong> — a tactile, six-key input device designed for Braille. Each keystroke combination encodes a Braille cell, representing a letter, number, or word contraction. The raw Braille cell output is captured and passed to the translation engine.</p>
+
+      <h3>Step 2 — Liblouis: Braille to Indonesian Text</h3>
+      <p><strong>Liblouis</strong> is an open-source Braille translation library that supports dozens of languages including Indonesian. In the Braille2Speech pipeline, Liblouis performs <em>back-translation</em>: it reads the raw Braille cells from the keyboard and converts them into readable Indonesian text. This is the linguistic bridge — transforming the student's tactile language into a form a TTS engine can pronounce. The AI4DeafBlind.org team, in collaboration with WATAP and KreasiTech Indonesia, verified Liblouis's back-translation accuracy using loaned refreshable Braille displays, ensuring the text produced faithfully represents what the student intended to type.</p>
+
+      <h3>Step 3 — Piper TTS: Indonesian Text to Speech</h3>
+      <p><strong>Piper</strong> is a fast, open-source, locally deployable text-to-speech engine. Deployed on a Raspberry Pi with an Indonesian language voice model, Piper converts the Liblouis-produced text into natural-sounding spoken Indonesian in real time. No cloud API. No subscription fee. No network request. The voice emerges from the device itself, aloud in the classroom, within moments of the student's last keystroke.</p>
+
+      <!-- Pipeline diagram -->
+      <nav aria-label="Braille2Speech pipeline stages">
+        <div class="pipeline" role="img" aria-label="Braille2Speech pipeline: Perkins Keyboard to Liblouis to Indonesian Text to Piper TTS to Spoken Voice">
+          <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">⌨️</span>Perkins<br>Keyboard</div>
+          <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">⣿</span>Raw Braille<br>Cells</div>
+          <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">🔄</span>Liblouis<br>Back-translation</div>
+          <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">📝</span>Indonesian<br>Text</div>
+          <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">🔊</span>Piper TTS<br>on Raspberry Pi</div>
+          <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">💬</span>Spoken<br>Voice</div>
+        </div>
+      </nav>
+
+      <div class="highlight-box">
+        <p><strong>Why Raspberry Pi?</strong> A Raspberry Pi costs a fraction of a commercial workstation and consumes minimal power. Deploying Piper TTS locally on a Raspberry Pi means the entire Braille2Speech system can run in any classroom — with or without electricity from the grid, with or without internet — making it viable for schools across Indonesia and beyond where infrastructure cannot be assumed.</p>
+      </div>
+
+      <!-- Section 3 -->
+      <h2>Empowerment Through Participation</h2>
+
+      <p>In the 1:1 and small-group teaching environments at Helen Keller Indonesia, Braille2Speech is fundamentally about participation. Not just access — participation.</p>
+
+      <p>Before this technology, a DeafBlind student's ability to contribute to a lesson depended entirely on the teacher's capacity to interpret their tactile responses in the moment. The student could understand, but expressing that understanding required significant mediation. Questions went unanswered in words. Ideas stayed unspoken. The teacher could sense engagement, but gauging comprehension — truly gauging it — was difficult.</p>
+
+      <div class="pullquote">
+        <p>"When the student typed their answer and the device spoke it aloud, it changed the dynamic of the whole lesson. For the first time, I could hear them."</p>
+        <cite>— Teacher, Helen Keller Indonesia (Braille2Speech field test)</cite>
+      </div>
+
+      <p>With Braille2Speech, a student types on their Perkins keyboard and their words are spoken aloud to their teacher. This simple act — a student answering a question in their own words, heard directly by the teacher — carries profound significance in a DeafBlind educational context. It means:</p>
+
+      <p><strong>Students can answer questions.</strong> Rather than nodding or gesturing, a student types their response and the room hears it. The teacher receives unambiguous feedback on comprehension.</p>
+
+      <p><strong>Students can express needs.</strong> A student who is confused, tired, or in discomfort can communicate that directly and immediately, without waiting for an interpreter or a physical check-in.</p>
+
+      <p><strong>Students can engage as equal participants.</strong> The classroom dynamic shifts from a teacher delivering to a student receiving, toward a genuine dialogue — two people exchanging information at the speed of conversation.</p>
+
+      <p>Teachers at Helen Keller Indonesia found this capability particularly transformative for gauging understanding during lessons. The ability to hear a student's typed words aloud — spontaneously, without additional mediation — allows for more responsive, adaptive teaching. When a student's answer reveals a misconception, the teacher can address it immediately. When an answer demonstrates mastery, the moment of recognition is shared.</p>
+
+      <div class="highlight-box">
+        <p><strong>Empowerment in practice:</strong> For a DeafBlind student, being heard is not a small thing. It is participation in the community of the classroom — and through it, in the wider community of school, neighborhood, and life. Braille2Speech gives students a voice that travels beyond their fingertips.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <!-- Section 4 -->
+      <h2>A Collaborative Journey: WATAP, KreasiTech, and the Testing Partnership</h2>
+
+      <p>The development of Braille2Speech was not a solo effort. It is the product of a deliberate, multi-partner collaboration built on the conviction that assistive technology for DeafBlind communities must be tested rigorously, in real conditions, with real users — before it reaches a classroom.</p>
+
+      <h3>WATAP: Verifying Translation Accuracy</h3>
+      <p>A critical challenge in building Braille2Speech was validating the accuracy of Liblouis's back-translation for Indonesian Braille. Without access to physical verification tools, errors in translation could go undetected until they reached students. Through our partnership with <strong>WATAP — the Washington Assistive Technology Act Program</strong> — the AI4DeafBlind.org team was able to use loaned refreshable Braille displays during the testing phase. These devices allowed engineers to read back the Liblouis-translated output directly in Braille, character by character, confirming that the pipeline accurately rendered what each student typed before the Piper TTS engine ever pronounced a word.</p>
+
+      <p>This partnership exemplifies the kind of resource-sharing that makes community-grounded assistive technology development possible. WATAP's loan program removed a significant barrier to high-quality testing without requiring the team to purchase expensive specialized hardware.</p>
+
+      <h3>KreasiTech Indonesia, UW, and WSU: Optimizing for Raspberry Pi</h3>
+      <p>Running a full text-to-speech pipeline on a Raspberry Pi — a device with modest processing power — requires more than simply installing software. It requires careful optimization: tuning Piper's voice model for low-latency inference, managing memory efficiently so Liblouis and Piper can run concurrently, and ensuring the system remains responsive under the real-world conditions of a classroom.</p>
+
+      <p>This optimization work was carried out collaboratively by engineers and scientists at the <strong>University of Washington</strong>, <strong>Washington State University</strong>, and <strong>KreasiTech Indonesia</strong>. The Indonesian engineers brought essential knowledge of local hardware availability and the specific acoustic environment of classrooms in Yogyakarta. The US university teams contributed expertise in embedded systems optimization and model inference efficiency. Together, they produced a system that is not only technically sound but practically reliable in the setting for which it was designed.</p>
+
+      <!-- Team block -->
+      <div class="team-block">
+        <h3>The Braille2Speech Collaboration</h3>
+        <ul class="team-list">
+          <li>AI scientists and engineers, <strong>AI4DeafBlind.org</strong></li>
+          <li>Engineers and interns, <strong>University of Washington</strong></li>
+          <li>Engineers and interns, <strong>Washington State University</strong></li>
+          <li><strong>KreasiTech Indonesia</strong> — Raspberry Pi optimization</li>
+          <li><strong>WATAP</strong> — loaned Braille display hardware for testing</li>
+          <li>Educators and students, <strong>Helen Keller Indonesia, Yogyakarta</strong></li>
+        </ul>
+      </div>
+
+      <p>Helen Keller Indonesia itself remained central to every decision. The school's educators shaped the interaction model — how quickly speech should follow a keystroke, at what volume, through what kind of speaker, in what kind of physical arrangement at the classroom table. Technology that works in the abstract must also work in the particular, and the team at Helen Keller Indonesia provided the grounded, practical perspective that turned a working prototype into a deployable tool.</p>
+
+      <!-- Section 5 -->
+      <h2>The Stronger Together Vision: Why Bidirectionality Matters</h2>
+
+      <p>The theme of the <strong>Washington State Department of Services for the Blind Stronger Together Conference</strong> resonates deeply with what Braille2Speech represents. Stronger Together is not simply a slogan — it describes the mechanism by which DeafBlind individuals gain access to fuller participation in education and community life: through technology that removes communication barriers, through partnerships that pool expertise and resources, and through systems designed for the people who use them.</p>
+
+      <p>A one-directional communication tool — however well designed — leaves one party in the conversation silent. Speech2Braille gave students access to their teacher's voice. Braille2Speech gives teachers access to their student's. Each pipeline is more powerful in the presence of the other. Together, they make a conversation possible where only a monologue existed before.</p>
+
+      <p>That is what "stronger together" means in a classroom in Yogyakarta: a teacher and a student, facing each other across a table, exchanging ideas at the speed of thought — one through speech, one through Braille — without intermediary, without delay, without exclusion.</p>
+
+      <!-- Conference callout -->
+      <div class="conference-box">
+        <h3>Looking Ahead: World Conference on Deafblindness 2027</h3>
+        <p>AI4DeafBlind.org is preparing an abstract for the <strong>World Conference on Deafblindness 2027</strong>, presenting the full bidirectional communication system — Speech2Braille and Braille2Speech — as an integrated, deployable, offline AI pipeline for DeafBlind education in under-resourced settings.</p>
+        <p>Our submission will document the complete pipeline architecture, the testing methodology developed in partnership with WATAP, the Raspberry Pi optimization approach developed with KreasiTech, UW, and WSU, and the field outcomes from Helen Keller Indonesia in Yogyakarta.</p>
+        <p><strong>We welcome contact from researchers, practitioners, and organizations working in DeafBlind education worldwide</strong> who are interested in collaborating on the abstract, replicating the pipeline in other languages, or presenting alongside us at WCDB 2027.</p>
+      </div>
+
+      <!-- Section 6 -->
+      <h2>Why Open, Offline, and Affordable Must Go Together</h2>
+
+      <p>The choice to build on Liblouis and Piper — both free, open-source tools — was not incidental. It reflects a principled position: that the DeafBlind community should not be dependent on proprietary platforms, cloud subscriptions, or hardware they cannot afford in order to communicate.</p>
+
+      <p>Commercial TTS systems can produce impressive-sounding voices, but they require persistent internet access and often charge per use. In a school in Yogyakarta where connectivity is intermittent and budgets are constrained, these are disqualifying conditions. Piper's local deployment model means the cost of the voice is fixed at the cost of the Raspberry Pi — a one-time, modest investment — and every word spoken thereafter costs nothing.</p>
+
+      <p>Liblouis is maintained by a global open-source community and supports Indonesian Braille with no licensing cost. By building on this foundation, AI4DeafBlind.org ensures that any school, organization, or community anywhere in the world can deploy Braille2Speech, adapt it for their local Braille code, and maintain it independently — without dependence on any single company or product.</p>
+
+      <p>This is what inclusive technology looks like at its most principled: not just accessible to the user, but accessible to the organizations that serve them.</p>
+
+      <hr class="rule" />
+
+      <!-- Closing -->
+      <h2>Summary</h2>
+
+      <p>Braille2Speech completes what Speech2Braille began. Together, these two pipelines — both running offline on affordable hardware, both developed through genuine US–Indonesia partnership — create a real-time, two-way communication channel between DeafBlind students and their teachers at Helen Keller Indonesia.</p>
+
+      <p>The Perkins keyboard carries a student's thoughts. Liblouis translates them from Braille into text. Piper speaks them aloud in Indonesian. The teacher hears. The student is understood. In a 1:1 teaching environment, that is the entire purpose of communication — achieved through three open-source components, a Raspberry Pi, and a collaboration spanning Seattle and Yogyakarta.</p>
+
+      <p>Participation is not a privilege. It is a right. Braille2Speech is one more step toward ensuring that DeafBlind students can exercise it — not in spite of their disability, but in full acknowledgment of it, with technology built to meet them where they are.</p>
+
+      <!-- Tags -->
+      <div class="tags" aria-label="Article tags">
+        <span class="tag">Braille2Speech</span>
+        <span class="tag">Piper TTS</span>
+        <span class="tag">Liblouis</span>
+        <span class="tag">Perkins Keyboard</span>
+        <span class="tag">DeafBlind</span>
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">Offline AI</span>
+        <span class="tag">Assistive Technology</span>
+        <span class="tag">Helen Keller Indonesia</span>
+        <span class="tag">WATAP</span>
+        <span class="tag">KreasiTech</span>
+        <span class="tag">University of Washington</span>
+        <span class="tag">Washington State University</span>
+        <span class="tag">Bidirectional Communication</span>
+        <span class="tag">AI4DeafBlind</span>
+        <span class="tag">WCDB 2027</span>
+        <span class="tag">Stronger Together</span>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-logo">AI4<span>DeafBlind</span>.org</div>
+  <p>© 2026 AI4DeafBlind. Open-source, open-hearted.</p>
+  <p>Seattle, WA, USA</p>
+</footer>
+
+<script>
+(function () {
+  const nav = document.querySelector('.site-nav');
+  const btn = document.getElementById('nav-menu-button');
+  const list = document.getElementById('primary-nav-list');
+  const articlesBtn = document.getElementById('nav-articles-btn');
+  const articlesWrap = articlesBtn && articlesBtn.closest('.nav-dropdown-wrap');
+  if (!nav || !btn || !list) return;
+  const label = btn.querySelector('.visually-hidden');
+  function isDesktopNav() {
+    return window.matchMedia('(min-width: 901px)').matches;
+  }
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open);
+    if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+    if (articlesBtn && !isDesktopNav()) {
+      articlesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  }
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  list.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      setOpen(false);
+    });
+  });
+  if (articlesWrap && articlesBtn) {
+    articlesWrap.addEventListener('mouseenter', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('mouseleave', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'false');
+    });
+    articlesWrap.addEventListener('focusin', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('focusout', function (e) {
+      if (!isDesktopNav()) return;
+      if (!articlesWrap.contains(e.relatedTarget)) {
+        articlesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>

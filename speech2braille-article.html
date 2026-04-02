@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Speech2Braille: Real-Time AI Pipeline for DeafBlind Students | AI4DeafBlind.org</title>
+  <meta name="description" content="AI4DeafBlind.org developed an offline Speech2Braille AI pipeline using fine-tuned Whisper to enable real-time two-way communication between teachers and DeafBlind students at Helen Keller Indonesia. Learn about the technology, social impact, and global collaboration behind this innovation." />
+  <meta name="keywords" content="Speech2Braille, DeafBlind technology, Whisper ASR, Braille display, AI for disability, Helen Keller Indonesia, GigaSpeech2, assistive technology, Indonesian speech recognition, offline AI, word error rate, WER, AI4DeafBlind" />
+  <meta name="author" content="AI4DeafBlind.org" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.ai4deafblind.org/speech2braille-pipeline" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Speech2Braille: Real-Time AI for DeafBlind Students in Indonesia" />
+  <meta property="og:description" content="How a US–Indonesia team fine-tuned OpenAI Whisper to run offline, converting spoken Indonesian to Braille in real time — giving DeafBlind students at Helen Keller Indonesia a direct link to their teacher's voice." />
+  <meta property="og:site_name" content="AI4DeafBlind.org" />
+  <meta property="article:published_time" content="2026-03-25" />
+  <meta property="article:author" content="AI4DeafBlind.org Team" />
+  <meta property="article:tag" content="Assistive Technology, DeafBlind, Speech Recognition, Braille, AI, Indonesia" />
+
+  <!-- Structured Data: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Speech2Braille: An Offline AI Pipeline for Real-Time Communication with DeafBlind Students",
+    "description": "AI4DeafBlind.org developed an end-to-end offline Speech2Braille pipeline using a fine-tuned Whisper Tiny Multilingual model trained on Indonesian speech data, enabling real-time two-way communication between teachers and DeafBlind students at Helen Keller Indonesia.",
+    "author": {
+      "@type": "Organization",
+      "name": "AI4DeafBlind.org",
+      "url": "https://www.ai4deafblind.org"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI4DeafBlind.org"
+    },
+    "datePublished": "2026-03-25",
+    "keywords": ["Speech2Braille","DeafBlind","Whisper","ASR","Braille display","assistive technology","Indonesia","Helen Keller","GigaSpeech2","offline AI"],
+    "articleSection": "Research & Innovation",
+    "about": [
+      {"@type": "Thing", "name": "Automatic Speech Recognition"},
+      {"@type": "Thing", "name": "Assistive Technology"},
+      {"@type": "Thing", "name": "DeafBlind Education"}
+    ]
+  }
+  </script>
+
+  <!-- FAQ Structured Data for chatbots -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Speech2Braille pipeline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Speech2Braille is an offline AI pipeline developed by AI4DeafBlind.org that converts spoken Indonesian language into Braille output in real time, enabling DeafBlind students to follow a teacher's speech through a refreshable Braille display without internet connectivity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI model powers Speech2Braille?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Speech2Braille uses OpenAI's Whisper Tiny Multilingual model, fine-tuned on Indonesian speech data from the GigaSpeech2 dataset. After 100,000 training steps, the Word Error Rate (WER) was reduced from 47.95% to below 20%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Speech2Braille run offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Running offline ensures the system works in Indonesian schools and rural communities where reliable internet access cannot be guaranteed, and keeps it affordable on modest hardware."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where was Speech2Braille field-tested?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Speech2Braille was field-tested at Helen Keller Indonesia, a school for DeafBlind students, in close collaboration with teachers and students."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who built Speech2Braille?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Speech2Braille was built by AI4DeafBlind.org through a global collaboration between US-based AI scientists, engineers, and interns from the University of Washington and Washington State University, alongside Indonesian software engineers."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADdElEQVR4nO2Vz2tcVRTHv+fcO/N+3PfezCTNaJrEloRmGtRqTbYFUdCNmyJdqHRtpf0fhv4Diii6EhHciT8oLhSl2pBNoVb7g8RiQ9GiGFqrTDLJzLx373ExM+ElJiS46WY+cN+7cO/53u859zweMGDAgAEPGdrHWv8t3YeAQPI/dPeKAQAoAHoPY3qXPao39qO/yY4HMSu8dfZN7+NvLkRhKYs7zKLW0sbpc6fXzpx5IxVxeTNANztLRGBiPPf8K+bXm0vB6uofiOODGJ2ebC0sfLbmnIPI1kLkyyxT47UXG63GSZvZJzKbTTjnEmYKAYFzsqaY/9FaLXte8NWF85+/M/f6XAoATIRDE1MvrTWbr9nMzmS2U7XOheheF5h5Qxf0PYZaDjx/frL27PuXLn3UzhtgArlSXLnasZ3j4gSg7n338yOi3lSgWKFY8H4IveBLIpVttNef7qTtl62z3QwJoFxxBQIIICIoFjxMjk9P/7R0+RcArHMVAGu1CIsnQXBEpCE9lZwWgcQ5J632xmyapbMEQuYyQESIyFHXKTERnAioZ0YEVkiICPeHEtPo63HfgEBQTsqfMrMGoESE+2K5wb1GUoqVLcflk4fHJo4WdfFuLhEWATVbGTETNZspvfrCGE084iNNRXme9/3FyxdXejqbBhwAeMrcBCgDoLqud/xyrECgC/ra73/+9sWNWzdu+V7wSc+scyLwi4zZWglpajEzmWDh2gPcXVmHV9Rg6Cu5hJA3QIvLPy4XWC8BYgWS7XQ6IFaxImPM2yJCAHi4NPKBYu0EAhGIV2QcO5LAWocjjxmEvpJWx0IrRimufN3tKrjtyhoADo6MnzUmEd8PxfdD+oGRSnn4ar1eL/avhABUh0bfDcNYgiDMPN9kID8NwygF+5kuBDYMjVTKB77tNTNvP7wP1+vf6eqBsffiqNSIokSMiSUMYzEmlihKZKgyMl+rPXW4v79XSnXqVL1YHX70wzgqOWNiieNETBhLHCWSxCU7VKnOz8wcP5Trpc2m+S8EnHjmxOjK6l9T66vNkU7a8b2Ctx7E0Z3btxevO+f6sVuahIhw7Ojc43837s+0N1olB7JxZO4lUeXO9Z+vLO4Wt2Ml9ljfyfiWzPYbt9fPiHNzwS7Nsw3eZmS/cQMGDBjwcPgXN2JS6dUrFXwAAAAASUVORK5CYII=">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ai4deafblind.css">
+  <link rel="stylesheet" href="article-pages.css">
+</head>
+<body class="article-page">
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html#hero" class="nav-logo" aria-label="AI4DeafBlind — home">AI4<span>DeafBlind</span></a>
+  <button type="button" class="nav-toggle" id="nav-menu-button" aria-expanded="false" aria-controls="primary-nav-list">
+    <span class="nav-toggle-bars" aria-hidden="true"></span>
+    <span class="visually-hidden">Open menu</span>
+  </button>
+  <ul id="primary-nav-list" class="nav-list" role="list">
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#technology">Technology</a></li>
+    <li class="nav-dropdown-wrap">
+      <button type="button" class="nav-dropdown-trigger" id="nav-articles-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-articles-menu">
+        Articles
+        <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="nav-articles-menu" class="nav-dropdown-panel" role="list">
+        <li><a href="speech2braille-article.html">Speech2Braille</a></li>
+        <li><a href="braille2speech-article.html">Braille2Speech</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#meet-the-team">Team</a></li>
+  </ul>
+</nav>
+
+<main id="main" class="article-page-main">
+  <header class="article-hero" role="banner">
+    <div class="article-hero-label">Research &amp; Innovation</div>
+    <h1>Speech2Braille:<br><em>Giving Voice to Fingertips</em></h1>
+    <p class="article-hero-sub">
+      How a US–Indonesia collaboration built an offline AI pipeline that converts a teacher's spoken words into real-time Braille — transforming the classroom experience for DeafBlind students at Helen Keller Indonesia.
+    </p>
+    <p class="article-hero-meta" aria-label="Article metadata">
+      <span>By AI4DeafBlind.org Team</span>
+      <span>·</span>
+      <span>March 2026</span>
+      <span>·</span>
+      <span>10 min read</span>
+    </p>
+  </header>
+
+  <div class="article-container">
+    <article>
+
+      <!-- Lead -->
+      <p class="lead">
+        Imagine sitting in a classroom where the teacher's voice reaches you not through your ears, but through your fingertips — instantly, naturally, and without a beat of delay. For DeafBlind students at Helen Keller Indonesia, this vision is becoming reality through a system called Speech2Braille, developed by the team at <strong>AI4DeafBlind.org</strong>.
+      </p>
+
+      <!-- Section 1 -->
+      <h2>The Challenge: Bridging Silence in the Classroom</h2>
+
+      <p>DeafBlind individuals — those with combined vision and hearing loss — navigate a world that is largely designed for people who can see and hear. In educational settings, this creates a profound communication barrier. Traditional approaches rely on tactile sign language interpreters or manual note-taking, which are slow, resource-intensive, and often unavailable in lower-resource environments like Indonesia.</p>
+
+      <p>At Helen Keller Indonesia, a leading school for DeafBlind students, the classroom setting is intimate by design: typically one teacher working with a small group of one to five students, gathered around a table, face-to-face. This closeness creates a natural opportunity for real, dynamic communication — but only if the right technology can bridge the gap between spoken language and tactile Braille.</p>
+
+      <p>The challenge the AI4DeafBlind.org team set out to solve was deceptively simple to state: <strong>convert a teacher's spoken Indonesian into Braille output, in real time, entirely offline, on affordable hardware.</strong></p>
+
+      <!-- Stats -->
+      <div class="stats" aria-label="Project key statistics">
+        <div class="stat-card">
+          <div class="stat-num">1–5</div>
+          <div class="stat-label">Students per session</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">&lt;20%</div>
+          <div class="stat-label">Word Error Rate achieved</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100K</div>
+          <div class="stat-label">Fine-tuning steps</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Offline operation</div>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <h2>The Technology: Fine-Tuning Whisper for Indonesian Speech</h2>
+
+      <p>The core of the Speech2Braille pipeline is a fine-tuned version of OpenAI's <strong>Whisper Tiny Multilingual model</strong> — a compact, open-source automatic speech recognition (ASR) system that was chosen precisely because it can run on modest, affordable hardware without an internet connection.</p>
+
+      <h3>Starting Point: Whisper Tiny Multilingual</h3>
+      <p>Whisper Tiny is the smallest member of the Whisper family of models. While powerful for many languages out of the box, its baseline performance on Indonesian — a richly diverse language with regional accents and informal registers — left significant room for improvement. The team measured an initial <strong>Word Error Rate (WER) of 47.95%</strong>, meaning nearly half of all recognized words contained errors. For educational use in a live classroom, this was far too high.</p>
+
+      <h3>Phase 1: Indonesian Fine-Tuning with GigaSpeech2</h3>
+      <p>To improve performance, the team turned to <strong>GigaSpeech2</strong>, a large-scale multilingual speech dataset that includes substantial Indonesian language content. This corpus provided thousands of hours of real-world Indonesian speech spanning diverse speakers, accents, and contexts — exactly the variety needed to make the model robust for classroom use.</p>
+
+      <p>The first fine-tuning run trained for <strong>5,000 steps</strong>, bringing the WER down from 47.95% to <strong>38.01%</strong> — a meaningful reduction, but still not sufficient for the clarity required in a real-time Braille feedback system.</p>
+
+      <h3>Phase 2: Extended Training to Breakthrough Accuracy</h3>
+      <p>Encouraged by the early gains, the team pressed further. Extending training to <strong>100,000 steps</strong> proved to be the breakthrough: the Word Error Rate dropped to <strong>below 20%</strong>. This is a critical threshold — at sub-20% WER, the model captures enough of a teacher's speech for a DeafBlind student to follow the flow of a lesson, understand key concepts, and stay meaningfully engaged.</p>
+
+      <!-- WER Progress -->
+      <div class="wer-section" aria-label="Word Error Rate improvement over training stages">
+        <h3>Word Error Rate: The Journey to Clarity</h3>
+        <div class="wer-row">
+          <div class="wer-label-row">
+            <span>Baseline (Whisper Tiny, no fine-tuning)</span>
+            <span><strong>47.95%</strong></span>
+          </div>
+          <div class="wer-bar-bg"><div class="wer-bar red" role="progressbar" aria-valuenow="47.95" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="wer-row">
+          <div class="wer-label-row">
+            <span>After 5,000 fine-tuning steps (GigaSpeech2)</span>
+            <span><strong>38.01%</strong></span>
+          </div>
+          <div class="wer-bar-bg"><div class="wer-bar amber" role="progressbar" aria-valuenow="38.01" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="wer-row">
+          <div class="wer-label-row">
+            <span>After 100,000 fine-tuning steps</span>
+            <span><strong>&lt;20%</strong></span>
+          </div>
+          <div class="wer-bar-bg"><div class="wer-bar green" role="progressbar" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+      </div>
+
+      <h3>The End-to-End Pipeline</h3>
+      <p>Speech recognition is only one piece of the system. The full Speech2Braille pipeline takes audio from a microphone, processes it through the fine-tuned Whisper model, and routes the recognized text to a refreshable Braille display — all in near-real time, running locally on the device.</p>
+
+      <!-- Pipeline diagram -->
+      <div class="pipeline" role="img" aria-label="Speech2Braille pipeline: Microphone to ASR to Text Processing to Braille Translation to Braille Display">
+        <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">🎙️</span>Microphone<br>Input</div>
+        <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">🧠</span>Whisper ASR<br>(Fine-tuned)</div>
+        <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">📝</span>Text<br>Processing</div>
+        <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">⣿</span>Braille<br>Translation</div>
+        <div class="pipe-step"><span class="pipe-icon" aria-hidden="true">🤲</span>Refreshable<br>Braille Display</div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Why offline?</strong> Many Indonesian schools and communities lack reliable broadband connectivity. Running the entire pipeline locally — without any cloud dependency — means the system works consistently in rural and under-resourced settings, and keeps student data private. Targeting affordable hardware ensures the solution can scale beyond pilot programs to reach students who need it most.</p>
+      </div>
+
+      <!-- Section 3 -->
+      <h2>The Social Impact: Closer Lessons, Real Connection</h2>
+
+      <p>Technology is only transformative if it meets real human needs. At Helen Keller Indonesia, the Speech2Braille system was designed with a specific educational reality in mind: intimate sessions where a teacher and a small group of students share a table, engaged in a lesson together.</p>
+
+      <p>Before Speech2Braille, bridging the communication gap in these sessions required teachers to manually convey each concept through tactile sign language — a process that is deeply personal and valuable, but also effortful and slow. Every pause to sign a word broke the flow of the lesson. Complex explanations were difficult to deliver at the pace a sighted, hearing student might receive them.</p>
+
+      <!-- Pull quote -->
+      <div class="pullquote">
+        <p>"The immediate feedback allows us to stay in sync during the lesson. I can speak naturally, and the student follows along on the display without me having to pause and sign every individual word manually."</p>
+        <cite>— Teacher, Helen Keller Indonesia (field test participant)</cite>
+      </div>
+
+      <p>With Speech2Braille active during a session, the dynamic shifts. The teacher speaks naturally. The student's fingers rest on the Braille display and read the teacher's words as they are spoken. Questions, answers, explanations — the full texture of classroom dialogue — become accessible in a way that mirrors how hearing students experience a lesson.</p>
+
+      <p>Importantly, the system is designed to <em>enhance</em>, not replace, the human connection at the heart of DeafBlind education. The small group format — one to five students around a table — remains central. Speech2Braille is a tool that frees the teacher to focus on pedagogy, relationship-building, and responsive instruction, rather than on the mechanical labor of translation.</p>
+
+      <p>Teachers who participated in field testing at Helen Keller Indonesia noted that having real-time Braille feedback during close-up sessions helps bridge the communication gap in a way that feels natural and unobtrusive. The system allows students to receive information directly through their fingertips, fostering a more immediate connection during daily lessons — one that previously required significant manual intervention to achieve.</p>
+
+      <div class="highlight-box">
+        <p><strong>Empowerment in practice:</strong> For DeafBlind students, access to a teacher's spoken words in real time is not a convenience — it is access to education itself. Speech2Braille turns every spoken word into a touchable reality, delivered at the speed of conversation.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <!-- Section 4 -->
+      <h2>Global Collaboration: From Seattle to Yogyakarta</h2>
+
+      <p>The Speech2Braille project is a product of genuine international partnership — one that brings together AI research expertise, software engineering talent, and deep community knowledge across the Pacific.</p>
+
+      <!-- Team block -->
+      <div class="team-block">
+        <h3>The Team Behind Speech2Braille</h3>
+        <ul class="team-list">
+          <li>AI scientist and engineers based in the United States</li>
+          <li>Interns from the <strong>University of Washington</strong></li>
+          <li>CS Professor from <strong>Washington State University</strong></li>
+          <li>Indonesian software engineers and developers</li>
+          <li>Educators and staff at <strong>Helen Keller Indonesia</strong></li>
+          <li>DeafBlind students</li>
+        </ul>
+      </div>
+
+      <p>This collaboration reflects AI4DeafBlind.org's core conviction: that the most meaningful assistive technology is built <em>with</em> the communities it serves, not merely <em>for</em> them. The Indonesian engineers on the team brought critical knowledge of local linguistic contexts, hardware constraints, and classroom realities. US-based team contributed expertise in ASR model architecture, fine-tuning methodology, and systems design. Interns from the University of Washington helped bridge research and engineering, gaining hands-on experience building AI systems that matter.</p>
+
+      <p>The field test at Helen Keller Indonesia was not simply a performance evaluation — it was a co-design process. Teacher feedback directly shaped decisions about how text is displayed, how quickly the Braille output refreshes, and how the system handles conversational Indonesian speech patterns.</p>
+
+      <!-- Section 5 -->
+      <h2>Looking Forward: Two-Way Conversation</h2>
+
+      <p>The Speech2Braille pipeline represents a foundational step toward a larger goal: <strong>real-time, two-way communication</strong> between teachers and DeafBlind students. The current system enables teachers to speak and students to read — a profound improvement. The next frontier is enabling students to communicate back, through Braille or other tactile input methods, completing the conversational loop.</p>
+
+      <p>AI4DeafBlind.org is actively working on this bidirectional capability, with ongoing research into Braille-to-text input, multilingual expansion beyond Indonesian, and hardware partnerships to bring the cost of the complete system within reach of schools across Southeast Asia and beyond.</p>
+
+      <p>The team is also exploring ways to improve robustness further — handling classroom noise, multiple speakers, and the natural informality of teacher-student dialogue — as the system moves from field testing toward broader deployment.</p>
+
+      <div class="pullquote">
+        <p>"Our goal is not just better technology — it is equitable access to education for every DeafBlind child, wherever they are. Speech2Braille is a step toward a world where geography and resources do not determine whether a child can follow their teacher's lesson."</p>
+        <cite>— AI4DeafBlind.org</cite>
+      </div>
+
+      <!-- Section 6 -->
+      <h2>Why This Work Matters</h2>
+
+      <p>According to the World Health Organization, there are tens of millions of people worldwide with combined vision and hearing loss. In lower-income countries, where specialized interpreters and assistive devices are scarce, DeafBlind individuals face some of the steepest barriers to education and participation in society.</p>
+
+      <p>Speech2Braille is part of a broader movement to apply the rapid advances in open-source AI — particularly in speech recognition and natural language processing — to serve populations that have historically been underserved by mainstream technology development. The choice to use Whisper Tiny, a compact and openly available model, was deliberate: it keeps the system accessible to any organization with modest hardware, and it can be further fine-tuned by local teams as language data and compute become available.</p>
+
+      <p>By demonstrating that a WER below 20% is achievable in Indonesian with 100,000 fine-tuning steps on publicly available data, the AI4DeafBlind.org team has created a replicable blueprint that other languages and communities can follow.</p>
+
+      <hr class="rule" />
+
+      <!-- Closing -->
+      <h2>Summary</h2>
+
+      <p>Speech2Braille is the result of a principled commitment: that AI should work for everyone, including those at the intersection of disability and under-resourced educational environments. By fine-tuning the Whisper Tiny Multilingual model on Indonesian speech data from GigaSpeech2, and extending training to 100,000 steps, the AI4DeafBlind.org team reduced the Word Error Rate from nearly 48% to below 20% — a transformation in practical classroom usability.</p>
+
+      <p>The system runs entirely offline on affordable Raspberry Pi 5 hardware. It was field-tested at Helen Keller Indonesia with real teachers and soon to include the students. It was built by a team spanning continents, disciplines, and institutions. And it is designed not to replace the human connection at the heart of DeafBlind education, but to deepen it — one word at a time, read through fingertips.</p>
+
+      <!-- Tags -->
+      <div class="tags" aria-label="Article tags">
+        <span class="tag">Speech2Braille</span>
+        <span class="tag">DeafBlind</span>
+        <span class="tag">Whisper ASR</span>
+        <span class="tag">GigaSpeech2</span>
+        <span class="tag">Indonesian NLP</span>
+        <span class="tag">Assistive Technology</span>
+        <span class="tag">Helen Keller Indonesia</span>
+        <span class="tag">Offline AI</span>
+        <span class="tag">Braille Display</span>
+        <span class="tag">AI4DeafBlind</span>
+        <span class="tag">Global Collaboration</span>
+        <span class="tag">University of Washington</span>
+        <span class="tag">Washington State University</span>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-logo">AI4<span>DeafBlind</span>.org</div>
+  <p>© 2026 AI4DeafBlind. Open-source, open-hearted.</p>
+  <p>Seattle, WA, USA</p>
+</footer>
+
+<script>
+(function () {
+  const nav = document.querySelector('.site-nav');
+  const btn = document.getElementById('nav-menu-button');
+  const list = document.getElementById('primary-nav-list');
+  const articlesBtn = document.getElementById('nav-articles-btn');
+  const articlesWrap = articlesBtn && articlesBtn.closest('.nav-dropdown-wrap');
+  if (!nav || !btn || !list) return;
+  const label = btn.querySelector('.visually-hidden');
+  function isDesktopNav() {
+    return window.matchMedia('(min-width: 901px)').matches;
+  }
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open);
+    if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+    if (articlesBtn && !isDesktopNav()) {
+      articlesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  }
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  list.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      setOpen(false);
+    });
+  });
+  if (articlesWrap && articlesBtn) {
+    articlesWrap.addEventListener('mouseenter', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('mouseleave', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'false');
+    });
+    articlesWrap.addEventListener('focusin', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('focusout', function (e) {
+      if (!isDesktopNav()) return;
+      if (!articlesWrap.contains(e.relatedTarget)) {
+        articlesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>
