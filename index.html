@@ -21,16 +21,6 @@
   </button>
   <ul id="primary-nav-list" class="nav-list" role="list">
     <li><a href="#technology">Technology</a></li>
-    <li class="nav-dropdown-wrap" hidden>
-      <button type="button" class="nav-dropdown-trigger" id="nav-articles-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-articles-menu">
-        Articles
-        <span class="nav-dropdown-chevron" aria-hidden="true"></span>
-      </button>
-      <ul id="nav-articles-menu" class="nav-dropdown-panel" role="list">
-        <li><a href="speech2braille-article.html">Speech2Braille</a></li>
-        <li><a href="braille2speech-article.html">Braille2Speech</a></li>
-      </ul>
-    </li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#meet-the-team">Team</a></li>
   </ul>
@@ -288,18 +278,19 @@
   <div class="reveal">
     <div class="section-label" aria-hidden="true">Research</div>
     <h2 id="publications-heading">Sharing what<br>we <em>discover</em></h2>
+    <p class="pub-section-lead">Technical write-ups on each pipeline — architecture, training data, benchmarks, and on-device performance.</p>
   </div>
 
-  <div class="pub-article-cards reveal" aria-label="Technical articles">
-    <a href="speech2braille-article.html" class="pub-article-card">
-      <h3 class="pub-article-card-title">Speech2Braille: Real-Time Indonesian ASR for DeafBlind Assistive Technology on Edge Devices</h3>
+  <div class="pub-article-cards reveal" id="publications-articles" aria-label="Technical articles">
+    <a href="speech2braille-article.html" class="pub-article-card" aria-label="Speech2Braille: Real-Time Indonesian ASR for DeafBlind Assistive Technology on Edge Devices">
+      <span class="pub-article-card-kicker">Speech2Braille</span>
+      <h3 class="pub-article-card-title">Real-Time Indonesian ASR for DeafBlind Assistive Technology on Edge Devices</h3>
       <p class="pub-article-card-meta">Whisper fine-tuning · GigaSpeech2 · Mozilla Common Voice ID v7.0</p>
-      <span class="pub-article-card-cta">Read article</span>
     </a>
-    <a href="braille2speech-article.html" class="pub-article-card">
-      <h3 class="pub-article-card-title">Braille2Speech: Perkins Keyboard to Natural Voice via Liblouis and Piper TTS on Raspberry Pi</h3>
+    <a href="braille2speech-article.html" class="pub-article-card" aria-label="Braille2Speech: Perkins Keyboard to Natural Voice via Liblouis and Piper TTS on Raspberry Pi">
+      <span class="pub-article-card-kicker">Braille2Speech</span>
+      <h3 class="pub-article-card-title">Perkins Keyboard to Natural Voice via Liblouis and Piper TTS on Raspberry Pi</h3>
       <p class="pub-article-card-meta">Piper TTS · Perkins input · Indonesian Braille · Edge inference</p>
-      <span class="pub-article-card-cta">Read article</span>
     </a>
   </div>
 
