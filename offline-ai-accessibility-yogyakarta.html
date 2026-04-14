@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Offline AI for Accessibility: Lessons from Deploying Bidirectional Speech–Braille in Yogyakarta | AI4DeafBlind.org</title>
+  <meta name="description" content="AI4DeafBlind.org founder Kim-Fu Lim shares field-test findings from deploying a bidirectional Speech–Braille device at Helen Keller Indonesia in Yogyakarta — what worked, what needs improvement, and what teachers taught the team about building assistive technology that truly serves the DeafBlind community." />
+  <meta name="keywords" content="offline AI accessibility, DeafBlind technology, Speech2Braille, Braille2Speech, Raspberry Pi, Helen Keller Indonesia, Yogyakarta, refreshable Braille display, Piper TTS, Liblouis, Perkins keyboard, assistive technology, braille grade levels, OCR image description, AI4DeafBlind, Kim-Fu Lim, bidirectional communication, field test" />
+  <meta name="author" content="Kim-Fu Lim, AI4DeafBlind.org" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.ai4deafblind.org/offline-ai-accessibility-yogyakarta" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Offline AI for Accessibility: Lessons from Deploying Bidirectional Speech–Braille in Yogyakarta" />
+  <meta property="og:description" content="What happened when AI4DeafBlind.org brought its bidirectional Speech–Braille prototype into real classrooms at Helen Keller Indonesia? Founder Kim-Fu Lim reflects on what worked, what teachers asked for, and where the technology needs to grow." />
+  <meta property="og:site_name" content="AI4DeafBlind.org" />
+  <meta property="article:published_time" content="2026-04-01" />
+  <meta property="article:author" content="Kim-Fu Lim" />
+  <meta property="article:tag" content="Offline AI, DeafBlind, Assistive Technology, Yogyakarta, Helen Keller Indonesia, Field Test, Speech2Braille, Braille2Speech" />
+
+  <!-- Structured Data: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Offline AI for Accessibility: Lessons from Deploying Bidirectional Speech–Braille in Yogyakarta",
+    "description": "AI4DeafBlind.org founder Kim-Fu Lim shares field-test findings from deploying a bidirectional Speech–Braille device at Helen Keller Indonesia — covering what worked well, what needs improvement, and what teachers' feedback revealed about building inclusive assistive technology.",
+    "author": {
+      "@type": "Person",
+      "name": "Kim-Fu Lim",
+      "url": "https://www.ai4deafblind.org"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI4DeafBlind.org",
+      "url": "https://www.ai4deafblind.org"
+    },
+    "datePublished": "2026-04-01",
+    "keywords": ["offline AI","DeafBlind","assistive technology","Speech2Braille","Braille2Speech","Raspberry Pi","Helen Keller Indonesia","Yogyakarta","refreshable Braille display","Liblouis","Piper TTS","field test","braille grade levels","OCR","bidirectional communication"],
+    "articleSection": "Field Reports & Lessons Learned",
+    "about": [
+      {"@type": "Thing", "name": "Assistive Technology"},
+      {"@type": "Thing", "name": "DeafBlind Education"},
+      {"@type": "Thing", "name": "Offline AI Deployment"},
+      {"@type": "Thing", "name": "Text-to-Speech Synthesis"},
+      {"@type": "Thing", "name": "Braille Translation"}
+    ]
+  }
+  </script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What worked well in the Yogyakarta field deployment of the bidirectional Speech–Braille device?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The core software and functional components performed exceptionally well. The microphone and audio processing modules accurately captured and processed speech, and the noise cancellation algorithm significantly improved audio quality — both critical for reliable Speech2Braille performance in a real classroom environment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What improvements are planned for the bidirectional Speech–Braille device after the Yogyakarta field test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key improvements include: upgrading the digital Braille display simulator's UI to match leading refreshable Braille displays on the market; transitioning from a digital simulator to a physical tactile hardware interface; adopting Grade 1 Indonesian Braille for foundational instruction; addressing the 6-pin vs. 8-pin Braille layout difference; and enhancing OCR to include descriptive image analysis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Braille grade level is recommended for DeafBlind classroom instruction in Indonesia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Teachers at Helen Keller Indonesia recommended Grade 1 (G1) Indonesian Braille for classroom instruction, as it is simpler and better suited to foundational braille teaching than Grade 2 (G2), which uses complex contractions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many Braille pins does the standard Indonesian Braille layout use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The standard Braille layout in Indonesia uses 6 pins. The AI4DeafBlind.org prototype used an 8-pin layout, which caused some unfamiliarity among teachers. The team plans to address this through teacher training on the 8-pin layout while also evaluating alignment with the Indonesian 6-pin standard."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What role did teachers at Helen Keller Indonesia play in shaping the device's development?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Teachers provided critical pedagogical feedback that shaped key product decisions: recommending Grade 1 Braille for foundational instruction, flagging the 6-pin vs. 8-pin layout mismatch, and requesting enhanced OCR with image description capabilities. Their input reflected deep expertise in DeafBlind education and redirected the team toward more educationally grounded product requirements."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADdElEQVR4nO2Vz2tcVRTHv+fcO/N+3PfezCTNaJrEloRmGtRqTbYFUdCNmyJdqHRtpf0fhv4Diii6EhHciT8oLhSl2pBNoVb7g8RiQ9GiGFqrTDLJzLx373ExM+ElJiS46WY+cN+7cO/53u859zweMGDAgAEPGdrHWv8t3YeAQPI/dPeKAQAoAHoPY3qXPao39qO/yY4HMSu8dfZN7+NvLkRhKYs7zKLW0sbpc6fXzpx5IxVxeTNANztLRGBiPPf8K+bXm0vB6uofiOODGJ2ebC0sfLbmnIPI1kLkyyxT47UXG63GSZvZJzKbTTjnEmYKAYFzsqaY/9FaLXte8NWF85+/M/f6XAoATIRDE1MvrTWbr9nMzmS2U7XOheheF5h5Qxf0PYZaDjx/frL27PuXLn3UzhtgArlSXLnasZ3j4gSg7n338yOi3lSgWKFY8H4IveBLIpVttNef7qTtl62z3QwJoFxxBQIIICIoFjxMjk9P/7R0+RcArHMVAGu1CIsnQXBEpCE9lZwWgcQ5J632xmyapbMEQuYyQESIyFHXKTERnAioZ0YEVkiICPeHEtPo63HfgEBQTsqfMrMGoESE+2K5wb1GUoqVLcflk4fHJo4WdfFuLhEWATVbGTETNZspvfrCGE084iNNRXme9/3FyxdXejqbBhwAeMrcBCgDoLqud/xyrECgC/ra73/+9sWNWzdu+V7wSc+scyLwi4zZWglpajEzmWDh2gPcXVmHV9Rg6Cu5hJA3QIvLPy4XWC8BYgWS7XQ6IFaxImPM2yJCAHi4NPKBYu0EAhGIV2QcO5LAWocjjxmEvpJWx0IrRimufN3tKrjtyhoADo6MnzUmEd8PxfdD+oGRSnn4ar1eL/avhABUh0bfDcNYgiDMPN9kID8NwygF+5kuBDYMjVTKB77tNTNvP7wP1+vf6eqBsffiqNSIokSMiSUMYzEmlihKZKgyMl+rPXW4v79XSnXqVL1YHX70wzgqOWNiieNETBhLHCWSxCU7VKnOz8wcP5Trpc2m+S8EnHjmxOjK6l9T66vNkU7a8b2Ctx7E0Z3btxevO+f6sVuahIhw7Ojc43837s+0N1olB7JxZO4lUeXO9Z+vLO4Wt2Ml9ljfyfiWzPYbt9fPiHNzwS7Nsw3eZmS/cQMGDBjwcPgXN2JS6dUrFXwAAAAASUVORK5CYII=">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ai4deafblind.css">
+  <link rel="stylesheet" href="article-pages.css">
+</head>
+<body class="article-page">
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html#hero" class="nav-logo" aria-label="AI4DeafBlind — home">AI4<span>DeafBlind</span></a>
+  <button type="button" class="nav-toggle" id="nav-menu-button" aria-expanded="false" aria-controls="primary-nav-list">
+    <span class="nav-toggle-bars" aria-hidden="true"></span>
+    <span class="visually-hidden">Open menu</span>
+  </button>
+  <ul id="primary-nav-list" class="nav-list" role="list">
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#technology">Technology</a></li>
+    <li class="nav-dropdown-wrap">
+      <button type="button" class="nav-dropdown-trigger" id="nav-articles-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-articles-menu">
+        Articles
+        <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="nav-articles-menu" class="nav-dropdown-panel" role="list">
+        <li><a href="speech2braille-article.html">Speech2Braille</a></li>
+        <li><a href="braille2speech-article.html">Braille2Speech</a></li>
+        <li><a href="liblouis-indonesian-braille-article.html">Liblouis Indonesian Braille</a></li>
+        <li><a href="offline-ai-accessibility-yogyakarta.html">Offline AI (Yogyakarta)</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#meet-the-team">Team</a></li>
+  </ul>
+</nav>
+
+<main id="main" class="article-page-main">
+  <div class="series-ribbon" role="note" aria-label="Article series navigation">
+    Field Reports &amp; Lessons Learned &nbsp;·&nbsp;
+    <a href="braille2speech-article.html">Read: Braille2Speech — A New Way to Be Heard →</a>
+  </div>
+
+  <header class="article-hero" role="banner">
+    <div class="article-hero-label">Field Report &amp; Lessons Learned</div>
+    <h1>Offline AI for Accessibility:<br><em>Lessons from Yogyakarta</em></h1>
+    <p class="article-hero-sub">
+      What actually happened when we brought a bidirectional Speech–Braille prototype into real classrooms at Helen Keller Indonesia — and what the teachers taught us about building technology that truly serves.
+    </p>
+    <p class="article-hero-meta" aria-label="Article metadata">
+      <span>By Kim-Fu Lim: Founder of AI4DeafBlind.org</span>
+      <span>·</span>
+      <span>April 2026</span>
+      <span>·</span>
+      <span>12 min read</span>
+    </p>
+  </header>
+
+  <div class="article-container">
+    <article>
+
+      <!-- Lead -->
+      <p class="lead">
+        Field deployment is where technology meets reality. On March 4, 2026, the AI4DeafBlind.org team brought a Raspberry Pi-powered prototype of our bidirectional Speech–Braille device to <strong>Helen Keller Indonesia (HKI)</strong> in Yogyakarta for hands-on testing with teachers. What we discovered — about what worked, what did not, and what we had not thought to ask — reshaped our understanding of what inclusive assistive technology actually requires.
+      </p>
+
+      <!-- Section 1 -->
+      <h2>The Deployment Setup</h2>
+
+      <p>Our field tests at Helen Keller Indonesia were conducted with a prototype powered by a <strong>Raspberry Pi 5</strong>. Peripherals included external speakers and a standard keyboard — used as a temporary substitute for a Perkins Brailler while the purpose-built tactile hardware is completed. The bidirectional system combined both of our pipelines running in tandem: <a href="speech2braille-article.html">Speech2Braille</a>, converting teachers' spoken Indonesian into Braille output on a digital display, and <a href="braille2speech-article.html">Braille2Speech</a>, converting student keyboard input back into spoken Indonesian for the teacher to hear.</p>
+
+      <p>The test conditions were deliberately close to real classroom use — no controlled laboratory environment, no ideal acoustics. The goal was to understand how the system performed where it would actually be used, and to put it in front of the people who would use it most: the educators of HKI.</p>
+
+      <div class="info-box">
+        <h3>About Helen Keller Indonesia</h3>
+        <p>Helen Keller Indonesia (HKI) in Yogyakarta is one of Indonesia's leading institutions for DeafBlind education. Its educators bring deep expertise in tactile and multisensory teaching methods, making HKI an ideal partner for field validation of communication technology designed for DeafBlind learners.</p>
+      </div>
+
+      <!-- Section 2 -->
+      <h2>What Worked Well</h2>
+
+      <p>From a software and functional standpoint, the core features of the system performed exceptionally well in field conditions. Two components in particular stood out as clear strengths.</p>
+
+      <p>The <strong>microphone and audio processing modules</strong> proved highly effective at capturing and processing speech accurately under real classroom conditions. Teachers spoke naturally — not into a microphone, not at a reduced pace — and the system reliably captured their words for downstream processing by the Speech2Braille pipeline.</p>
+
+      <p>Equally significant was the performance of the <strong>noise cancellation algorithm</strong>. Classroom environments are not acoustically clean. Background sounds — movement, adjacent voices, ambient noise from outside — are a constant feature of real school settings. The noise cancellation component significantly improved audio quality, filtering ambient interference and enabling more accurate speech recognition than would otherwise be possible. For a device designed to operate in under-resourced classrooms where acoustic treatment is not feasible, this resilience is not a convenience — it is a requirement.</p>
+
+      <div class="findings" aria-label="Summary of field test findings">
+        <div class="finding-card positive">
+          <div class="finding-label">✓ What Worked Well</div>
+          <ul>
+            <li>Microphone &amp; audio processing — high accuracy in real classroom conditions</li>
+            <li>Noise cancellation algorithm — robust performance against ambient classroom noise</li>
+            <li>End-to-end pipeline stability — both Speech2Braille and Braille2Speech ran concurrently on Raspberry Pi 5</li>
+            <li>Teacher engagement — strong enthusiasm and active participation throughout the test</li>
+          </ul>
+        </div>
+        <div class="finding-card improve">
+          <div class="finding-label">→ Needs Improvement</div>
+          <ul>
+            <li>Digital Braille display simulator — UI needs to better represent physical refreshable displays</li>
+            <li>Physical hardware — transition from simulator to tactile interface is a top priority</li>
+            <li>Braille grade level — Grade 2 used in testing; Grade 1 recommended for foundational teaching</li>
+            <li>Pin configuration — prototype used 8-pin; Indonesian standard is 6-pin</li>
+            <li>OCR enhancement — image description capability needed beyond text recognition</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <h2>What Needs to Be Improved</h2>
+
+      <p>The most significant limitation identified during the field test was the use of a <strong>digital Braille display simulator</strong> rather than a physical tactile interface. Some users found it difficult to fully visualize or experience the final form of the product through a screen-based simulation — which is, of course, not what a refreshable Braille display feels like to a user who reads by touch.</p>
+
+      <p>This is not a flaw in the technology itself, but a gap in the current prototype. Moving forward, we will improve the simulator's UI to more closely resemble the leading refreshable Braille displays available on the market. More fundamentally, transitioning from a digital simulator to a physical hardware interface — a physical Braille cell array that users can touch — is a top priority for the next development phase.</p>
+
+      <div class="highlight-box">
+        <p><strong>Priority next step:</strong> Physical tactile hardware. A DeafBlind user reads with their fingertips. No digital simulation, however accurate, replicates the experience of raised Braille cells under skin. Delivering a physical refreshable Braille interface is not an enhancement — it is the foundation the technology is being built toward.</p>
+      </div>
+
+      <!-- Section 4 -->
+      <h2>What the Teachers Taught Us</h2>
+
+      <figure class="article-photo-block">
+        <div class="photo-frame">
+          <img src="images/group-photo.jpeg" alt="Group Photo taken at HKI" loading="lazy" decoding="async" />
+        </div>
+        <figcaption class="photo-caption">Group Photo taken at HKI</figcaption>
+      </figure>
+
+      <p>The most valuable learning from the Yogyakarta deployment did not come from system logs or performance metrics. It came from the educators at Helen Keller Indonesia, whose suggestions revealed requirements that no amount of remote design work would have surfaced.</p>
+
+      <p>The teachers were <strong>enthusiastically engaged</strong> throughout the testing sessions. Only a few had prior experience with refreshable Braille displays, which made their curiosity all the more striking — they asked detailed questions about long-term capabilities, and specifically whether the device could be optimized as a primary tool for <em>teaching</em> Braille to students, not just as a communication aid. Their frame of reference was pedagogical from the start, and that shaped every suggestion they made.</p>
+
+      <h3>Braille Grade Level: G2 vs. G1</h3>
+      <p>During the demonstration, we used the <strong>Grade 2 (G2)</strong> Indonesian Braille table, which includes complex contracted forms — abbreviations and shorthand that experienced Braille readers use for efficiency. The teachers immediately identified the mismatch: for foundational classroom instruction, <strong>Grade 1 (G1)</strong> Braille is far more appropriate. It is simpler, cell-by-cell, and directly reflects the written alphabet — exactly what students learning Braille for the first time need to encounter. G2 contractions are a fluency tool; G1 is the learning foundation.</p>
+
+      <h3>Pin Configuration: 8-Pin vs. 6-Pin</h3>
+      <p>Our prototype used an <strong>8-pin Braille cell configuration</strong> — a layout that supports additional characters, numbers, and formatting beyond the standard 6-dot Braille alphabet. The teachers noted, simply and clearly, that the standard in Indonesia is <strong>6-pin Braille</strong>. The 8-pin layout was unfamiliar and, for a teacher introducing the device to students for the first time, a source of unnecessary confusion. Moving forward, we plan to address this gap through teacher training on the 8-pin layout so educators can understand its additional capabilities — while also carefully evaluating what alignment with the Indonesian 6-pin standard requires.</p>
+
+      <h3>Enhanced OCR: Beyond Text</h3>
+      <p>A suggestion that expanded our product vision: teachers asked that the system's OCR (Optical Character Recognition) and image processing features go beyond recognizing printed text to include <strong>descriptive analysis of images</strong>. In a classroom setting, a DeafBlind student's world of printed materials includes diagrams, illustrations, photographs, and charts — not just text. The ability to receive a spoken or Braille description of a visual image, not just its text content, would give students a far more complete picture of the materials they work with. This is a well-defined enhancement that leverages recent advances in vision-language AI models, and it has moved up our development roadmap as a result of this feedback.</p>
+
+      <!-- Teacher feedback table -->
+      <table class="feedback-table" aria-label="Summary of teacher feedback and planned responses">
+        <thead>
+          <tr>
+            <th scope="col">Feedback Area</th>
+            <th scope="col">What Teachers Said</th>
+            <th scope="col">Our Response</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Braille Grade Level</td>
+            <td>Grade 2 (G2) is too advanced for foundational instruction; Grade 1 (G1) is the right starting point for teaching students Braille</td>
+            <td>Switching default to G1 Indonesian Braille for classroom mode<br><span class="status-plan">In Roadmap</span></td>
+          </tr>
+          <tr>
+            <td>Pin Configuration</td>
+            <td>Standard in Indonesia is 6-pin Braille; the 8-pin prototype caused unfamiliarity</td>
+            <td>Teacher training program on 8-pin capabilities; evaluating 6-pin alignment<br><span class="status-plan">In Planning</span></td>
+          </tr>
+          <tr>
+            <td>OCR &amp; Image Processing</td>
+            <td>Should describe images, not just read text — students need descriptive analysis of visual materials</td>
+            <td>Integrating vision-language model for image description; added to development roadmap<br><span class="status-plan">In Roadmap</span></td>
+          </tr>
+          <tr>
+            <td>Teaching Braille</td>
+            <td>Could this be a primary tool for teaching Braille to students, not just a communication aid?</td>
+            <td>Exploring a dedicated "Teaching Mode" with structured Braille instruction scaffolding<br><span class="status-plan">Under Exploration</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pullquote">
+        <p>"We hope this project continues to evolve until it reaches its full potential, as the dedication shown in creating tools for the deafblind community is both rare and profoundly needed."</p>
+        <cite>— Ms. Florentina Peni Laras, S.Pd, Teacher, Helen Keller Indonesia</cite>
+      </div>
+
+      <!-- Section 5 -->
+      <h2>Five Lessons for Offline AI in Accessibility</h2>
+
+      <p>Reflecting on the Yogyakarta deployment, five lessons stand out — each with implications that extend beyond this project to the broader challenge of building AI-powered assistive technology for under-resourced settings.</p>
+
+      <ol class="lessons-list" aria-label="Five lessons from the Yogyakarta deployment">
+        <li>
+          <p><strong>Real classrooms are the only true test environment.</strong> No amount of lab testing replicates the acoustic variability, the physical constraints, and the educational context of a real school. Getting hardware into the hands of real educators early — even in prototype form — produces feedback that cannot be obtained any other way.</p>
+        </li>
+        <li>
+          <p><strong>Teachers are pedagogical experts, not just users.</strong> The feedback from HKI educators was not primarily about usability or interface preferences — it was about educational requirements. They understood the students' learning trajectories, the role of Braille grade levels in instruction, and the difference between a communication aid and a teaching tool. That expertise is irreplaceable and must be part of the design process from the beginning.</p>
+        </li>
+        <li>
+          <p><strong>Hardware simulation has limits.</strong> A digital simulator can demonstrate software logic, but it cannot demonstrate what a physical refreshable Braille display feels like under a student's fingertips. For technology that is fundamentally tactile, physical hardware is not a nice-to-have — it is the core user experience.</p>
+        </li>
+        <li>
+          <p><strong>Local standards are non-negotiable.</strong> The 6-pin vs. 8-pin gap illustrates a principle that applies to every localization decision: what is standard in the community you are building for must be the default. Technical advantages of non-standard approaches must be introduced through education, not assumed through design.</p>
+        </li>
+        <li>
+          <p><strong>Offline resilience is a feature, not a constraint.</strong> The system's ability to run entirely on a Raspberry Pi without internet access was not a technical workaround — in the conditions of HKI's classrooms, it was the foundational requirement that made deployment possible. Building for offline is building for the actual world.</p>
+        </li>
+      </ol>
+
+      <!-- Section 6 -->
+      <h2>What Comes Next</h2>
+
+      <p>The Yogyakarta deployment was a beginning, not a conclusion. The field test validated the core technology — the audio pipeline, the noise cancellation, the bidirectional architecture — while surfacing a clear set of priorities for the next development phase.</p>
+
+      <p>In the near term, the team will focus on three areas: completing the transition to a physical refreshable Braille display interface; updating the default Braille grade level to G1 for classroom deployments; and beginning work on image description capabilities to extend the system's usefulness beyond text-heavy materials.</p>
+
+      <p>Longer term, the possibility of a dedicated "Teaching Mode" — a configuration designed not just for communication but for structured Braille instruction — has emerged as a compelling direction, shaped directly by what HKI's educators asked for. Technology built by the community it serves is more likely to be used, more likely to be trusted, and more likely to make a real difference. That principle has guided every decision in this project, and it will continue to do so.</p>
+
+      <div class="highlight-box">
+        <p><strong>Interested in collaborating?</strong> AI4DeafBlind.org welcomes contact from researchers, educators, and organizations working in DeafBlind education worldwide — especially those interested in adapting the bidirectional pipeline for other languages and Braille standards, or in replicating the deployment in new settings. We are also preparing a submission for the <strong>World Conference on Deafblindness 2027</strong> and welcome co-presenters and co-authors.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <!-- Closing -->
+      <h2>Summary</h2>
+
+      <p>The field deployment at Helen Keller Indonesia confirmed that the core architecture of our bidirectional Speech–Braille system is sound: the audio processing performs reliably, the noise cancellation holds up in real classroom conditions, and the end-to-end pipeline runs stably on affordable, offline hardware. These are not small achievements.</p>
+
+      <p>What the deployment also confirmed is that the technology is not finished — and could not be, without this kind of direct, field-level engagement with the educators and students it is designed to serve. The feedback from HKI's teachers was specific, grounded, and actionable. It has already reshaped our roadmap. That is exactly how it should work.</p>
+
+      <p>Offline AI for accessibility is not a niche challenge. It is a design discipline — one that demands technical rigor, genuine partnership with affected communities, and the humility to treat every deployment as a learning opportunity. We are grateful to Helen Keller Indonesia for what they taught us, and committed to the work that remains.</p>
+
+      <!-- Tags -->
+      <div class="tags" aria-label="Article tags">
+        <span class="tag">Offline AI</span>
+        <span class="tag">Assistive Technology</span>
+        <span class="tag">DeafBlind</span>
+        <span class="tag">Field Test</span>
+        <span class="tag">Helen Keller Indonesia</span>
+        <span class="tag">Yogyakarta</span>
+        <span class="tag">Speech2Braille</span>
+        <span class="tag">Braille2Speech</span>
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">Refreshable Braille Display</span>
+        <span class="tag">Piper TTS</span>
+        <span class="tag">Liblouis</span>
+        <span class="tag">Braille Grade Levels</span>
+        <span class="tag">OCR Image Description</span>
+        <span class="tag">AI4DeafBlind</span>
+        <span class="tag">Kim-Fu Lim</span>
+        <span class="tag">WCDB 2027</span>
+        <span class="tag">Inclusive Technology</span>
+      </div>
+
+      <hr class="rule" />
+
+      <section class="author-bio" aria-labelledby="about-author-heading">
+        <h2 id="about-author-heading">About the Author</h2>
+        <div class="author-bio-inner">
+          <img class="author-bio-photo" src="images/kim-fu-lim.jpg" alt="Kim-Fu Lim, founder of AI4DeafBlind.org" width="400" height="400" loading="lazy" decoding="async" />
+          <div class="author-bio-text">
+            <p>Kim-Fu Lim is a Computer Science and Mathematics graduate from the University of Washington with an
+              extensive background in developing mission-critical software systems. His career spans a diverse range of
+              technical domains, including Electronic Design Automation for Data I/O, large-scale customer acquisition and
+              care applications for Accenture's wireless clients, and unified communication servers for Active Voice.
+            </p>
+            <p>He founded iCrescendo post 9/11, specializing in critical infrastructure protection for power substations
+              and water infrastructures. At Amazon, he managed cross-functional teams to deliver solutions for Sellers
+              Onboarding, Fulfillment Centers, AWS Commerce Platform, and Alexa Engine. Most recently, he has focused on
+              developing bidirectional communication smart devices designed specifically for DeafBlind teachers and
+              students, bridging the gap in assistive technology through innovative engineering.</p>
+          </div>
+        </div>
+      </section>
+
+      <p class="article-disclosure">Disclosure: This article was developed with the assistance of AI tools for
+        structural and editorial refinement. The technical concepts and final review were provided by the author.</p>
+
+    </article>
+  </div>
+
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-logo">AI4<span>DeafBlind</span>.org</div>
+  <p>© 2026 AI4DeafBlind. Open-source, open-hearted.</p>
+  <p>Seattle, WA, USA</p>
+</footer>
+
+<script>
+(function () {
+  const nav = document.querySelector('.site-nav');
+  const btn = document.getElementById('nav-menu-button');
+  const list = document.getElementById('primary-nav-list');
+  const articlesBtn = document.getElementById('nav-articles-btn');
+  const articlesWrap = articlesBtn && articlesBtn.closest('.nav-dropdown-wrap');
+  if (!nav || !btn || !list) return;
+  const label = btn.querySelector('.visually-hidden');
+  function isDesktopNav() {
+    return window.matchMedia('(min-width: 901px)').matches;
+  }
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open);
+    if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+    if (articlesBtn && !isDesktopNav()) {
+      articlesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  }
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  list.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      setOpen(false);
+    });
+  });
+  if (articlesWrap && articlesBtn) {
+    articlesWrap.addEventListener('mouseenter', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('mouseleave', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'false');
+    });
+    articlesWrap.addEventListener('focusin', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('focusout', function (e) {
+      if (!isDesktopNav()) return;
+      if (!articlesWrap.contains(e.relatedTarget)) {
+        articlesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>

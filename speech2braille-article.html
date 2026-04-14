@@ -134,6 +134,8 @@
         <ul id="nav-articles-menu" class="nav-dropdown-panel" role="list">
           <li><a href="speech2braille-article.html">Speech2Braille</a></li>
           <li><a href="braille2speech-article.html">Braille2Speech</a></li>
+          <li><a href="liblouis-indonesian-braille-article.html">Liblouis Indonesian Braille</a></li>
+          <li><a href="offline-ai-accessibility-yogyakarta.html">Offline AI (Yogyakarta)</a></li>
         </ul>
       </li>
       <li><a href="index.html#contact">Contact</a></li>
@@ -214,6 +216,14 @@
           because it can run on modest, affordable hardware without an internet connection.</p>
 
         <h3>The Research That Made It Possible: LiteASR</h3>
+
+        <figure class="article-photo-block">
+          <div class="photo-frame">
+            <img src="images/lite-asr.png" alt="LiteASR research figure showing low-rank approximation of Whisper encoder layers and resulting model size and accuracy tradeoffs compared to baseline Whisper" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="photo-caption">LiteASR: efficient Whisper encoders for on-device speech recognition</figcaption>
+        </figure>
+
         <p>
           A critical intellectual foundation for the Speech2Braille pipeline came from within the team itself. Keisuke
           Kamahori, a Computer Science PhD student at the University of Washington and AI4DeafBlind.org team member,
@@ -314,6 +324,20 @@
             Running the entire pipeline locally — without any cloud dependency — means the system works consistently in
             rural and under-resourced settings, and keeps student data private. Targeting affordable hardware ensures
             the solution can scale beyond pilot programs to reach students who need it most.</p>
+          <div class="highlight-box-photos" role="group" aria-label="Affordable edge hardware">
+            <figure class="article-photo-block article-photo-block--compact">
+              <div class="photo-frame">
+                <img src="images/raspberry-pi.jpg" alt="Raspberry Pi single-board computer with ports visible, representing affordable hardware for fully offline Speech2Braille deployment in schools" loading="lazy" decoding="async" />
+              </div>
+              <figcaption class="photo-caption">Raspberry Pi — low-cost platform for offline inference</figcaption>
+            </figure>
+            <figure class="article-photo-block article-photo-block--compact">
+              <div class="photo-frame">
+                <img src="images/jetson-nano.png" alt="NVIDIA Jetson Nano module and carrier board with heat sink, used for edge AI prototyping alongside Raspberry Pi class devices" loading="lazy" decoding="async" />
+              </div>
+              <figcaption class="photo-caption">Jetson Nano — edge GPU option for heavier models</figcaption>
+            </figure>
+          </div>
         </div>
 
         <!-- Section 3 -->
@@ -377,6 +401,13 @@
             <li>DeafBlind students</li>
           </ul>
         </div>
+
+        <figure class="article-photo-block">
+          <div class="photo-frame">
+            <img src="images/meet-greet.jpeg" alt="Group photo at a meet and greet: Speech2Braille collaborators from UW, partners, and community members standing together indoors" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="photo-caption">Meet and greet with the Speech2Braille collaboration team</figcaption>
+        </figure>
 
         <p>This collaboration reflects AI4DeafBlind.org's core conviction: that the most meaningful assistive technology
           is built <em>with</em> the communities it serves, not merely <em>for</em> them. The Indonesian engineers on
@@ -467,16 +498,21 @@
 
         <section class="author-bio" aria-labelledby="about-author-heading">
           <h2 id="about-author-heading">About the Author</h2>
-          <p>Kim-Fu Lim is a Computer Science and Mathematics graduate from the University of Washington with an
-            extensive background in developing mission-critical software systems. His career spans a diverse range of
-            technical domains, including Electronic Design Automation for Data I/O, large-scale customer acquisition and
-            care applications for Accenture's wireless clients, and unified communication servers for Active Voice.
-          </p>
-          <p>He founded iCrescendo post 9/11, specializing in critical infrastructure protection for power substations
-            and water infrastructures. At Amazon, he managed cross-functional teams to deliver solutions for Sellers
-            Onboarding, Fulfillment Centers, AWS Commerce Platform, and Alexa Engine. Most recently, he has focused on
-            developing bidirectional communication smart devices designed specifically for DeafBlind teachers and
-            students, bridging the gap in assistive technology through innovative engineering.</p>
+          <div class="author-bio-inner">
+            <img class="author-bio-photo" src="images/kim-fu-lim.jpg" alt="Kim-Fu Lim, founder of AI4DeafBlind.org" width="400" height="400" loading="lazy" decoding="async" />
+            <div class="author-bio-text">
+              <p>Kim-Fu Lim is a Computer Science and Mathematics graduate from the University of Washington with an
+                extensive background in developing mission-critical software systems. His career spans a diverse range of
+                technical domains, including Electronic Design Automation for Data I/O, large-scale customer acquisition and
+                care applications for Accenture's wireless clients, and unified communication servers for Active Voice.
+              </p>
+              <p>He founded iCrescendo post 9/11, specializing in critical infrastructure protection for power substations
+                and water infrastructures. At Amazon, he managed cross-functional teams to deliver solutions for Sellers
+                Onboarding, Fulfillment Centers, AWS Commerce Platform, and Alexa Engine. Most recently, he has focused on
+                developing bidirectional communication smart devices designed specifically for DeafBlind teachers and
+                students, bridging the gap in assistive technology through innovative engineering.</p>
+            </div>
+          </div>
         </section>
 
         <p class="article-disclosure">Disclosure: This article was developed with the assistance of AI tools for

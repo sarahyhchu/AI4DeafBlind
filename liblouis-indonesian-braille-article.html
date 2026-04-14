@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Extending Liblouis with Indonesian Braille: Methodology and Open-Source Contribution | AI4DeafBlind.org</title>
+  <meta name="description" content="AI4DeafBlind.org developed Grade 1 and Grade 2 (Tusing) Indonesian Braille translation tables for Liblouis — an open-source contribution that bridges a critical gap in assistive technology for Indonesia's DeafBlind community. Discover the methodology, challenges, and global collaboration behind this work." />
+  <meta name="keywords" content="Liblouis Indonesian Braille, Indonesian Braille translation tables, Tusing Braille, Grade 2 Braille Indonesia, AI4DeafBlind, Braille translation open source, DeafBlind Indonesia, assistive technology Indonesia, eBraille, BRF, Helen Keller Indonesia, Braille2Speech, Speech2Braille, open source Braille, Perkins keyboard, refreshable Braille display" />
+  <meta name="author" content="AI4DeafBlind.org" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.ai4deafblind.org/liblouis-indonesian-braille" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Extending Liblouis with Indonesian Braille: Methodology and Open-Source Contribution" />
+  <meta property="og:description" content="AI4DeafBlind.org built Grade 1 and Grade 2 Indonesian Braille tables for Liblouis — an open-source contribution enabling offline Braille translation for DeafBlind students across Indonesia. Learn about the methodology, the Tusing contracted Braille system, and the road ahead." />
+  <meta property="og:site_name" content="AI4DeafBlind.org" />
+  <meta property="article:published_time" content="2025-04-17" />
+  <meta property="article:author" content="AI4DeafBlind.org Team" />
+  <meta property="article:tag" content="Liblouis, Indonesian Braille, Tusing, Grade 2 Braille, Open Source, DeafBlind, Assistive Technology" />
+
+  <!-- Structured Data: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Extending Liblouis with Indonesian Braille: Methodology and Open-Source Contribution",
+    "description": "AI4DeafBlind.org developed Grade 1 and Grade 2 (Tusing) Indonesian Braille translation tables for the Liblouis open-source library, enabling accurate offline Braille translation for DeafBlind students in Indonesia. This article documents the methodology, key challenges, and the global collaboration behind the work.",
+    "author": {
+      "@type": "Organization",
+      "name": "AI4DeafBlind.org",
+      "url": "https://www.ai4deafblind.org"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI4DeafBlind.org"
+    },
+    "datePublished": "2025-04-17",
+    "keywords": ["Liblouis","Indonesian Braille","Tusing","Grade 1 Braille","Grade 2 Braille","open source","DeafBlind","assistive technology","eBraille","BRF","Helen Keller Indonesia","AI4DeafBlind"],
+    "articleSection": "Research & Innovation",
+    "about": [
+      {"@type": "Thing", "name": "Braille Translation"},
+      {"@type": "Thing", "name": "Open Source Software"},
+      {"@type": "Thing", "name": "Assistive Technology"},
+      {"@type": "Thing", "name": "DeafBlind Education"}
+    ]
+  }
+  </script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What Indonesian Braille tables has AI4DeafBlind.org developed for Liblouis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI4DeafBlind.org has developed two Indonesian Braille translation tables for Liblouis: a Grade 1 (G1) table for literal, character-by-character translation, and an Advanced Grade 2 (G2) table that incorporates contractions and shorthand from the Indonesian Tusing system. Both tables are in final stages of development, with collaborative sharing available to interested partners."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Tusing in Indonesian Braille?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tusing is the Indonesian term for contracted Braille, sometimes referred to as Indonesian short-writing. Similar to Grade 2 Braille in other languages, Tusing uses contractions and shorthand to represent common words and letter patterns, allowing DeafBlind readers to read and write more efficiently."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What were the main challenges in developing Indonesian Braille tables for Liblouis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key challenges included: a lack of official documentation on current Indonesian Braille rules; Indonesian-specific conventions for numbers and punctuation that differ from international standards; and scattered, difficult-to-compile vocabulary resources for Tusing contracted Braille. These were addressed through practitioner consultation, expert validation, and cross-referencing with existing Liblouis tables including Malaysian and Unified English Braille tables."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I find or contribute to AI4DeafBlind's Liblouis Indonesian tables?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tables are currently in final development. AI4DeafBlind.org is open to sharing progress with partner organizations interested in contributing. Contact AI4DeafBlind.org directly via their website at https://www.ai4deafblind.org to discuss collaboration."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are AI4DeafBlind.org's future plans for Indonesian Braille support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Future work includes reviewing tables for additional common rules and edge cases, exploring support for .brf (Braille Ready File) format, and investigating .ebrl (eBraille) for advanced web Braille formats including HTML, XML, and CSS support."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADdElEQVR4nO2Vz2tcVRTHv+fcO/N+3PfezCTNaJrEloRmGtRqTbYFUdCNmyJdqHRtpf0fhv4Diii6EhHciT8oLhSl2pBNoVb7g8RiQ9GiGFqrTDLJzLx373ExM+ElJiS46WY+cN+7cO/53u859zweMGDAgAEPGdrHWv8t3YeAQPI/dPeKAQAoAHoPY3qXPao39qO/yY4HMSu8dfZN7+NvLkRhKYs7zKLW0sbpc6fXzpx5IxVxeTNANztLRGBiPPf8K+bXm0vB6uofiOODGJ2ebC0sfLbmnIPI1kLkyyxT47UXG63GSZvZJzKbTTjnEmYKAYFzsqaY/9FaLXte8NWF85+/M/f6XAoATIRDE1MvrTWbr9nMzmS2U7XOheheF5h5Qxf0PYZaDjx/frL27PuXLn3UzhtgArlSXLnasZ3j4gSg7n338yOi3lSgWKFY8H4IveBLIpVttNef7qTtl62z3QwJoFxxBQIIICIoFjxMjk9P/7R0+RcArHMVAGu1CIsnQXBEpCE9lZwWgcQ5J632xmyapbMEQuYyQESIyFHXKTERnAioZ0YEVkiICPeHEtPo63HfgEBQTsqfMrMGoESE+2K5wb1GUoqVLcflk4fHJo4WdfFuLhEWATVbGTETNZspvfrCGE084iNNRXme9/3FyxdXejqbBhwAeMrcBCgDoLqud/xyrECgC/ra73/+9sWNWzdu+V7wSc+scyLwi4zZWglpajEzmWDh2gPcXVmHV9Rg6Cu5hJA3QIvLPy4XWC8BYgWS7XQ6IFaxImPM2yJCAHi4NPKBYu0EAhGIV2QcO5LAWocjjxmEvpJWx0IrRimufN3tKrjtyhoADo6MnzUmEd8PxfdD+oGRSnn4ar1eL/avhABUh0bfDcNYgiDMPN9kID8NwygF+5kuBDYMjVTKB77tNTNvP7wP1+vf6eqBsffiqNSIokSMiSUMYzEmlihKZKgyMl+rPXW4v79XSnXqVL1YHX70wzgqOWNiieNETBhLHCWSxCU7VKnOz8wcP5Trpc2m+S8EnHjmxOjK6l9T66vNkU7a8b2Ctx7E0Z3btxevO+f6sVuahIhw7Ojc43837s+0N1olB7JxZO4lUeXO9Z+vLO4Wt2Ml9ljfyfiWzPYbt9fPiHNzwS7Nsw3eZmS/cQMGDBjwcPgXN2JS6dUrFXwAAAAASUVORK5CYII=">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ai4deafblind.css">
+  <link rel="stylesheet" href="article-pages.css">
+</head>
+<body class="article-page">
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html#hero" class="nav-logo" aria-label="AI4DeafBlind — home">AI4<span>DeafBlind</span></a>
+  <button type="button" class="nav-toggle" id="nav-menu-button" aria-expanded="false" aria-controls="primary-nav-list">
+    <span class="nav-toggle-bars" aria-hidden="true"></span>
+    <span class="visually-hidden">Open menu</span>
+  </button>
+  <ul id="primary-nav-list" class="nav-list" role="list">
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#technology">Technology</a></li>
+    <li class="nav-dropdown-wrap">
+      <button type="button" class="nav-dropdown-trigger" id="nav-articles-btn" aria-expanded="false" aria-haspopup="true" aria-controls="nav-articles-menu">
+        Articles
+        <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="nav-articles-menu" class="nav-dropdown-panel" role="list">
+        <li><a href="speech2braille-article.html">Speech2Braille</a></li>
+        <li><a href="braille2speech-article.html">Braille2Speech</a></li>
+        <li><a href="liblouis-indonesian-braille-article.html">Liblouis Indonesian Braille</a></li>
+        <li><a href="offline-ai-accessibility-yogyakarta.html">Offline AI (Yogyakarta)</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#meet-the-team">Team</a></li>
+  </ul>
+</nav>
+
+<main id="main" class="article-page-main">
+  <div class="series-ribbon" role="note" aria-label="Article series navigation">
+    Part 3 of the Two-Way Communication Series &nbsp;·&nbsp;
+    <a href="speech2braille-article.html">Part 1: Speech2Braille →</a>
+    &nbsp;·&nbsp;
+    <a href="braille2speech-article.html">Part 2: Braille2Speech →</a>
+  </div>
+
+  <header class="article-hero" role="banner">
+    <div class="article-hero-label">Research &amp; Innovation</div>
+    <h1>Extending Liblouis<br>with <em>Indonesian Braille</em></h1>
+    <p class="article-hero-sub">
+      Methodology, challenges, and open-source contribution — how AI4DeafBlind.org built Grade 1 and Grade 2 Indonesian Braille translation tables that no one had built before.
+    </p>
+    <p class="article-hero-meta" aria-label="Article metadata">
+      <span>By AI4DeafBlind.org Team</span>
+      <span>·</span>
+      <span>April 2026</span>
+      <span>·</span>
+      <span>11 min read</span>
+    </p>
+  </header>
+
+  <div class="article-container">
+    <article>
+
+      <!-- Lead -->
+      <p class="lead">
+        Every offline AI pipeline is only as accurate as the language foundations beneath it. For the <strong>Speech2Braille</strong> and <strong>Braille2Speech</strong> systems to work — for a teacher's words to reach a DeafBlind student as faithful Braille, and for a student's keystrokes to be spoken aloud with precision — the Braille translation layer must be correct. In building this foundation for Indonesian, AI4DeafBlind.org confronted a gap that no one had yet filled: Indonesian Braille translation tables did not exist in Liblouis. So we built them.
+      </p>
+
+      <!-- Section 1 -->
+      <h2>Why Indonesian Braille Tables Didn't Exist</h2>
+
+      <p>Liblouis is the world's leading open-source Braille translation library — the backbone of accessibility tools on Windows, macOS, iOS, and Android, and the engine at the heart of both our Speech2Braille and Braille2Speech pipelines. It supports dozens of languages. But Indonesian Braille, which serves millions of people across one of the world's most populous nations, had no representation in the Liblouis table ecosystem.</p>
+
+      <p>This is not unusual. Assistive technology has historically been developed for languages and markets where economic incentives exist. Indonesian, despite its scale, falls outside that circle. The gap between technological possibility and practical access for Indonesia's DeafBlind community was — and in many places still is — wide.</p>
+
+      <p>Filling that gap is precisely the kind of work AI4DeafBlind.org exists to do. Building Indonesian Braille tables for Liblouis is not just an engineering task. It is an act of recognition: a declaration that Indonesian-speaking DeafBlind people deserve the same quality of translation infrastructure that speakers of English, German, or French take for granted.</p>
+
+      <div class="stats" aria-label="Key facts about the Liblouis Indonesian project">
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Table grades built</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">G1 + G2</div>
+          <div class="stat-label">Literal + contracted</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Prior Indonesian tables in Liblouis</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Open</div>
+          <div class="stat-label">Source contribution</div>
+        </div>
+      </div>
+
+      <!-- Photo pair - Image 1 and Image 2 -->
+      <div class="photo-pair" role="region" aria-label="Field photographs from Helen Keller Indonesia">
+        <div class="photo-item">
+          <div class="photo-frame">
+            <div class="photo-illustration" role="img" aria-label="An Indonesian female teacher sits beside a DeafBlind girl, who touches the raised pins on a Focus 14 Blue Braille Display. A Raspberry Pi 5 is visible on the desk. Warm classroom light. The girl's fingertips read Braille cells on the display as the teacher watches closely.">
+              <!-- Illustration: girl touching Braille display -->
+              <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Desk surface -->
+                <rect x="0" y="148" width="260" height="52" rx="0" fill="rgba(255,255,255,0.06)"/>
+                <!-- Raspberry Pi board -->
+                <rect x="168" y="130" width="56" height="38" rx="3" fill="#2d7a22" opacity="0.85"/>
+                <rect x="172" y="134" width="48" height="30" rx="2" fill="#1a5a14" opacity="0.7"/>
+                <circle cx="174" cy="136" r="2" fill="#e8ff90" opacity="0.8"/>
+                <circle cx="218" cy="156" r="2" fill="#ff6060" opacity="0.8"/>
+                <text x="178" y="151" font-family="monospace" font-size="6" fill="rgba(180,255,140,0.7)">RPi 5</text>
+                <!-- Focus 14 Braille Display -->
+                <rect x="60" y="133" width="98" height="26" rx="3" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+                <!-- Braille cells on display -->
+                <g fill="rgba(200,180,255,0.7)">
+                  <circle cx="70" cy="141" r="2.2"/><circle cx="70" cy="148" r="2.2"/>
+                  <circle cx="76" cy="141" r="2.2"/><circle cx="76" cy="148" r="2.2"/>
+                  <circle cx="83" cy="141" r="2.2"/><circle cx="83" cy="148" r="2.2"/>
+                  <circle cx="89" cy="141" r="2.2"/><circle cx="89" cy="148" r="2.2"/>
+                  <circle cx="96" cy="141" r="2.2"/><circle cx="96" cy="148" r="2.2"/>
+                  <circle cx="103" cy="141" r="2.2"/><circle cx="103" cy="148" r="2.2"/>
+                  <circle cx="110" cy="141" r="2.2"/><circle cx="110" cy="148" r="2.2"/>
+                  <circle cx="117" cy="141" r="2.2"/><circle cx="117" cy="148" r="2.2"/>
+                  <circle cx="124" cy="141" r="2.2"/><circle cx="124" cy="148" r="2.2"/>
+                  <circle cx="131" cy="141" r="2.2"/><circle cx="131" cy="148" r="2.2"/>
+                  <circle cx="138" cy="141" r="2.2"/><circle cx="138" cy="148" r="2.2"/>
+                  <circle cx="145" cy="141" r="2.2"/><circle cx="145" cy="148" r="2.2"/>
+                </g>
+                <!-- Student (right) - touching display -->
+                <!-- Body -->
+                <ellipse cx="155" cy="94" rx="20" ry="28" fill="rgba(200,160,100,0.6)"/>
+                <!-- Head -->
+                <circle cx="155" cy="60" r="17" fill="rgba(210,170,110,0.75)"/>
+                <!-- Hair -->
+                <ellipse cx="155" cy="52" rx="17" ry="9" fill="rgba(30,20,10,0.85)"/>
+                <!-- Arm reaching to display -->
+                <path d="M142 100 Q120 120 100 143" stroke="rgba(200,160,100,0.65)" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <!-- Hand on display -->
+                <ellipse cx="100" cy="146" rx="10" ry="5" fill="rgba(210,170,110,0.7)"/>
+                <!-- Teacher (left) -->
+                <ellipse cx="48" cy="96" rx="18" ry="26" fill="rgba(180,120,80,0.55)"/>
+                <circle cx="48" cy="63" r="16" fill="rgba(190,130,85,0.7)"/>
+                <!-- Teacher hijab -->
+                <ellipse cx="48" cy="56" rx="19" ry="11" fill="rgba(90,60,140,0.8)"/>
+                <rect x="30" y="63" width="36" height="18" rx="4" fill="rgba(90,60,140,0.6)"/>
+                <!-- Teacher arm pointing at display -->
+                <path d="M56 100 Q75 115 90 140" stroke="rgba(180,120,80,0.6)" stroke-width="7" stroke-linecap="round" fill="none"/>
+                <!-- Warm light glow from display -->
+                <ellipse cx="109" cy="148" rx="50" ry="10" fill="rgba(180,160,255,0.12)"/>
+              </svg>
+            </div>
+          </div>
+          <p class="photo-caption">
+            <strong>Image 1 — Reading with Touch</strong>
+            A DeafBlind student at Helen Keller Indonesia traces Braille cells on a <strong>Focus 14 Blue Braille Display</strong> as her teacher observes. A <strong>Raspberry Pi 5</strong> on the desk runs the Speech2Braille pipeline entirely offline.
+          </p>
+        </div>
+
+        <div class="photo-item">
+          <div class="photo-frame">
+            <div class="photo-illustration" role="img" aria-label="The same DeafBlind girl now types on a Perkins Braille keyboard. Her Indonesian female teacher listens. The Raspberry Pi 5 and Focus 14 display are visible on the desk. The student's fingers press the six keys of the Perkins keyboard to compose a Braille response.">
+              <!-- Illustration: girl typing Perkins keyboard -->
+              <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Desk surface -->
+                <rect x="0" y="148" width="260" height="52" rx="0" fill="rgba(255,255,255,0.06)"/>
+                <!-- Perkins Brailler keyboard -->
+                <rect x="52" y="128" width="110" height="40" rx="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <!-- Perkins keys — 6 dot keys + space -->
+                <circle cx="76" cy="143" r="6" fill="rgba(100,80,200,0.7)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <circle cx="93" cy="143" r="6" fill="rgba(100,80,200,0.7)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <circle cx="110" cy="143" r="6" fill="rgba(100,80,200,0.7)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <circle cx="127" cy="143" r="6" fill="rgba(100,80,200,0.7)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <circle cx="144" cy="143" r="6" fill="rgba(100,80,200,0.7)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                <!-- Space bar -->
+                <rect x="83" y="157" width="48" height="6" rx="3" fill="rgba(150,130,220,0.5)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <!-- Raspberry Pi board -->
+                <rect x="172" y="132" width="52" height="34" rx="3" fill="#2d7a22" opacity="0.85"/>
+                <rect x="176" y="136" width="44" height="26" rx="2" fill="#1a5a14" opacity="0.7"/>
+                <circle cx="178" cy="138" r="2" fill="#e8ff90" opacity="0.8"/>
+                <text x="180" y="152" font-family="monospace" font-size="6" fill="rgba(180,255,140,0.7)">RPi 5</text>
+                <!-- Focus 14 display (background) -->
+                <rect x="20" y="138" width="26" height="14" rx="2" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+                <!-- Student - typing -->
+                <ellipse cx="152" cy="94" rx="20" ry="28" fill="rgba(200,160,100,0.6)"/>
+                <circle cx="152" cy="60" r="17" fill="rgba(210,170,110,0.75)"/>
+                <!-- Hair -->
+                <ellipse cx="152" cy="52" rx="17" ry="9" fill="rgba(30,20,10,0.85)"/>
+                <!-- Two hands on keyboard -->
+                <path d="M138 102 Q120 118 100 140" stroke="rgba(200,160,100,0.65)" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <path d="M158 102 Q148 120 130 140" stroke="rgba(200,160,100,0.65)" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <ellipse cx="98" cy="143" rx="9" ry="5" fill="rgba(210,170,110,0.7)"/>
+                <ellipse cx="130" cy="142" rx="9" ry="5" fill="rgba(210,170,110,0.7)"/>
+                <!-- Keystroke glow on pressed keys -->
+                <circle cx="93" cy="143" r="8" fill="rgba(220,200,255,0.15)"/>
+                <circle cx="110" cy="143" r="8" fill="rgba(220,200,255,0.2)"/>
+
+                <!-- Teacher (left) listening -->
+                <ellipse cx="46" cy="96" rx="18" ry="26" fill="rgba(180,120,80,0.55)"/>
+                <circle cx="46" cy="63" r="16" fill="rgba(190,130,85,0.7)"/>
+                <!-- Teacher hijab -->
+                <ellipse cx="46" cy="56" rx="19" ry="11" fill="rgba(90,60,140,0.8)"/>
+                <rect x="28" y="63" width="36" height="18" rx="4" fill="rgba(90,60,140,0.6)"/>
+                <!-- Sound waves from speaker (teacher listening) -->
+                <path d="M30 80 Q22 85 30 90" stroke="rgba(200,180,255,0.4)" stroke-width="1.5" fill="none"/>
+                <path d="M30 76 Q18 85 30 94" stroke="rgba(200,180,255,0.3)" stroke-width="1.5" fill="none"/>
+                <!-- Small speaker icon -->
+                <rect x="14" y="115" width="18" height="14" rx="2" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <text x="18" y="125" font-size="8" fill="rgba(200,180,255,0.7)">🔊</text>
+              </svg>
+            </div>
+          </div>
+          <p class="photo-caption">
+            <strong>Image 2 — Speaking Through Keys</strong>
+            The same student types her response on a <strong>Perkins Braille keyboard</strong>. The Braille2Speech pipeline translates her keystrokes through Liblouis and Piper TTS, speaking her words aloud so her teacher can hear — a real-time exchange powered by the Indonesian tables AI4DeafBlind.org built.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <h2>The Two Tables: Grade 1 and Grade 2 (Tusing)</h2>
+
+      <p>Indonesian Braille, like most modern Braille systems, operates at two levels of encoding. Each serves a different communicative purpose, and each required a distinct approach in our Liblouis implementation.</p>
+
+      <div class="grade-cards" aria-label="Comparison of Grade 1 and Grade 2 Indonesian Braille tables">
+        <div class="grade-card">
+          <div class="grade-card-header g1">Grade 1 — Literal Translation</div>
+          <div class="grade-card-body">
+            <p><strong>Character-by-character.</strong> Every letter, number, and punctuation mark is encoded individually as a distinct Braille cell.</p>
+            <p>Grade 1 is essential for learning, for spelling out unfamiliar words, and for contexts requiring unambiguous precision — including names, technical vocabulary, and early literacy.</p>
+            <p>Our G1 table establishes the orthographic foundation: the mapping of the full Indonesian alphabet, numeral system, and punctuation conventions to their Braille cell equivalents.</p>
+          </div>
+        </div>
+        <div class="grade-card">
+          <div class="grade-card-header g2">Grade 2 — Tusing (Contracted)</div>
+          <div class="grade-card-body">
+            <p><strong>Contractions and shorthand.</strong> Common words and letter patterns are represented by single Braille cells or short sequences, greatly increasing reading and writing speed.</p>
+            <p>In Indonesian, this contracted system is called <strong>Tusing</strong> — from <em>tulisan singkat</em>, meaning shorthand writing. Proficient DeafBlind readers use Tusing for natural, efficient communication.</p>
+            <p>Our G2 table incorporates the vocabulary of Tusing contractions compiled through practitioner consultation and expert review.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Why both grades matter:</strong> A system that supports only Grade 1 limits its users to slow, laborious communication. A system without Grade 1 cannot serve learners or handle specialized vocabulary. AI4DeafBlind.org built both — ensuring the Liblouis Indonesian implementation supports the full spectrum of DeafBlind literacy.</p>
+      </div>
+
+      <!-- Section 3 -->
+      <h2>The Challenges: What Made This Work Hard</h2>
+
+      <p>Building language tables for Liblouis is not a mechanical process. It requires deep, accurate knowledge of how Braille is actually used in a given language — and for Indonesian, that knowledge proved genuinely difficult to obtain.</p>
+
+      <div class="challenge-block" aria-label="Challenges and solutions in building Indonesian Braille tables">
+        <div class="challenge-row">
+          <div class="challenge-icon" aria-hidden="true">⚠</div>
+          <div class="challenge-text">
+            <strong class="problem">Challenge 1 — Absent official documentation</strong>
+            <p>There was no consolidated, authoritative documentation describing current Indonesian Braille rules. Unlike some language communities where a single standards body publishes a definitive reference, Indonesian Braille rules were scattered across older manuals, practitioner knowledge, and regional variation. This meant we could not simply translate a specification; we had to reconstruct one through research and validation.</p>
+          </div>
+        </div>
+        <div class="challenge-row">
+          <div class="challenge-icon" aria-hidden="true">⚠</div>
+          <div class="challenge-text">
+            <strong class="problem">Challenge 2 — Non-standard numbers and punctuation</strong>
+            <p>Indonesian Braille uses specific conventions for representing numbers and punctuation that differ from international standards such as Unified English Braille (UEB). These differences are not cosmetic — they affect translation accuracy at the character level. Each divergence had to be identified, documented, and correctly encoded in the table, rather than imported from existing cross-language Liblouis rules.</p>
+          </div>
+        </div>
+        <div class="challenge-row">
+          <div class="challenge-icon" aria-hidden="true">⚠</div>
+          <div class="challenge-text">
+            <strong class="problem">Challenge 3 — Scattered Tusing vocabulary</strong>
+            <p>Compiling a comprehensive vocabulary of Tusing contractions — the Grade 2 shorthand words and patterns — required gathering materials from multiple, disparate sources. There was no single published Tusing wordlist suitable for direct use. Completeness could not be assumed; every contraction had to be explicitly verified against actual usage to ensure the table would perform reliably in real classroom conditions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pullquote">
+        <p>"One major hurdle was the lack of official documentation on current Braille rules in Indonesia, which necessitated extensive research and manual verification of actual usage. Indonesian-specific rules for numbers and punctuation differ from international standards, adding another layer of complexity."</p>
+        <cite>— Rio Kisna, AI4DeafBlind.org Software Engineer</cite>
+      </div>
+
+      <!-- Section 4 -->
+      <h2>The Methodology: How We Built What Didn't Exist</h2>
+
+      <p>Confronting these challenges required a methodology grounded in community knowledge, comparative analysis, and rigorous verification — not just engineering.</p>
+
+      <table class="method-table" aria-label="Development methodology for Indonesian Braille Liblouis tables">
+        <thead>
+          <tr>
+            <th scope="col">Phase</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Research &amp; Compilation</td>
+            <td>Gathered available printed and digital materials documenting Indonesian Braille conventions, including historical manuals, educational materials, and practitioner guides</td>
+            <td>Build a source base for rule derivation where no official standard existed</td>
+          </tr>
+          <tr>
+            <td>Practitioner Consultation</td>
+            <td>Engaged with Braille educators, transcribers, and DeafBlind practitioners in Indonesia to validate rules against actual usage in educational and community settings</td>
+            <td>Ground-truth the rules against lived practice, not just written descriptions</td>
+          </tr>
+          <tr>
+            <td>Cross-Reference Benchmarking</td>
+            <td>Compared implementation approaches against existing Liblouis tables — particularly the Malaysian Braille tables (linguistically adjacent to Indonesian) and Unified English Braille (UEB) tables as a technical structure reference</td>
+            <td>Ensure technical correctness of Liblouis table syntax and identify potential shared patterns</td>
+          </tr>
+          <tr>
+            <td>Hardware Verification</td>
+            <td>Used WATAP-loaned refreshable Braille displays to read back Liblouis translation output directly in Braille, validating cell-by-cell accuracy for both G1 and G2 tables</td>
+            <td>Catch translation errors before they reached students, with physical confirmation of output quality</td>
+          </tr>
+          <tr>
+            <td>Classroom Testing</td>
+            <td>Deployed tables in the Speech2Braille and Braille2Speech pipelines at Helen Keller Indonesia in Yogyakarta, with educator feedback on translation quality in live use</td>
+            <td>Validate that tables perform correctly in the real acoustic and tactile environment for which they were built</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The cross-referencing with Malaysian Braille tables was particularly valuable. Malay and Indonesian share significant vocabulary and grammatical structure, and the existing Malaysian Liblouis tables provided both a technical benchmark for table construction and a set of patterns against which Indonesian-specific divergences could be clearly identified and documented.</p>
+
+      <div class="highlight-box">
+        <p><strong>The WATAP contribution:</strong> Physical verification using WATAP-loaned refreshable Braille displays was indispensable. It allowed the team to confirm that what Liblouis translated was what a DeafBlind reader would actually feel under their fingertips — not just what a screen reader reported as text. This kind of tactile ground-truth is not possible through software alone.</p>
+      </div>
+
+      <!-- Section 5 -->
+      <h2>The Outcome: What Was Built</h2>
+
+      <p>Through this methodology, the AI4DeafBlind.org team successfully completed two Indonesian Braille translation tables for Liblouis:</p>
+
+      <p>The <strong>Grade 1 (G1) table</strong> provides a complete, verified literal translation of Indonesian — covering the full alphabet, numeral system with Indonesian-specific conventions, punctuation, and special characters. It forms the reliable orthographic layer on which the entire two-pipeline communication system depends.</p>
+
+      <p>The <strong>Advanced Grade 2 (G2) table</strong> implements Tusing — the Indonesian contracted Braille system — with a vocabulary of contractions and shorthand compiled and validated through practitioner consultation. It enables fluent, efficient communication for DeafBlind users who have developed Tusing literacy, bringing Indonesian Braille technology into parity with the contracted Braille systems available in other Liblouis-supported languages.</p>
+
+      <p>Both tables are currently in their final stages of development. AI4DeafBlind.org has not yet made a formal public release, but the tables are actively used in the Speech2Braille and Braille2Speech pipelines deployed in our Lab today and soon at Helen Keller Indonesia — functioning in real classrooms, serving real students.</p>
+
+      <!-- Section 6 -->
+      <h2>An Open-Source Contribution to a Global Commons</h2>
+
+      <p>The choice to contribute these tables to Liblouis — rather than building a proprietary translation layer — is central to AI4DeafBlind.org's innovation philosophy. Liblouis is maintained by a global community of developers and Braille experts. When AI4DeafBlind.org contributes Indonesian tables to this library, the benefit extends beyond Indonesia and beyond our own pipelines.</p>
+
+      <p>Any developer anywhere in the world building an application that uses Liblouis — a screen reader, a Braille embosser driver, an educational tool — gains access to Indonesian Braille translation. Any organization seeking to serve Indonesia's DeafBlind community can build on this foundation rather than starting from scratch. Any future researcher extending Indonesian Braille support to new dialects, Braille formats, or digital contexts has a verified starting point.</p>
+
+      <p>This is what global collaboration in assistive technology looks like at its most principled: knowledge produced through local expertise and community partnership, contributed freely to a global infrastructure, multiplying its benefit beyond any single organization or project.</p>
+
+      <div class="conference-box">
+        <h3>Interested in Contributing or Collaborating?</h3>
+        <p>AI4DeafBlind.org is open to sharing the Indonesian Braille tables with <strong>partner organizations, researchers, and practitioners</strong> interested in contributing to the project's growth — whether through linguistic review, technical testing in additional Braille devices, or extension to additional regional Braille variants.</p>
+        <p>Organizations seeking to deploy Braille2Speech or Speech2Braille pipelines in other Indonesian-language contexts are especially encouraged to connect with us. The tables can form the linguistic foundation of bidirectional communication systems beyond Yogyakarta — across Indonesia, and wherever Indonesian Braille is used.</p>
+        <p><strong>Contact us at <a href="https://www.ai4deafblind.org">www.ai4deafblind.org</a></strong> to discuss collaboration.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <!-- Section 7 -->
+      <h2>What Comes Next: The Road Ahead</h2>
+
+      <p>Completing the G1 and G2 tables is a foundation, not a destination. The AI4DeafBlind.org team is actively pursuing the next phases of Indonesian Braille development for Liblouis.</p>
+
+      <div class="roadmap" aria-label="Future development roadmap for Indonesian Braille in Liblouis">
+        <div class="roadmap-item">
+          <div class="roadmap-dot done" aria-label="Completed"></div>
+          <div class="roadmap-title">Grade 1 Table — Complete</div>
+          <p class="roadmap-desc">Full literal Indonesian Braille translation, verified through practitioner review and physical Braille display testing. Field tested at Helen Keller Indonesia.</p>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot done" aria-label="Completed"></div>
+          <div class="roadmap-title">Grade 2 (Tusing) Table — Complete</div>
+          <p class="roadmap-desc">Indonesian contracted Braille (Tusing) vocabulary compiled, validated, and in final development. Supporting efficient, natural-speed communication for proficient DeafBlind users.</p>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot active" aria-label="In progress"></div>
+          <div class="roadmap-title">Edge Case Expansion — In Progress</div>
+          <p class="roadmap-desc">Ongoing review of both tables to expand coverage of common linguistic edge cases, regional vocabulary, technical vocabulary, and less frequent but important Braille rule applications that emerge from classroom use.</p>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot" aria-label="Planned"></div>
+          <div class="roadmap-title">BRF (Braille Ready File) Support</div>
+          <p class="roadmap-desc">Exploring expanded support for the <strong>.brf</strong> (Braille Ready File) format, enabling Indonesian Braille documents to be prepared for embossing and distributed in the standard digital Braille file format used by libraries and Braille production centers worldwide.</p>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot" aria-label="Planned"></div>
+          <div class="roadmap-title">eBraille (.ebrl) Support</div>
+          <p class="roadmap-desc">Investigating the potential of <strong>.ebrl</strong> (eBraille) — the emerging standard for digital Braille in web contexts — to support Indonesian Braille in advanced formats including <strong>HTML, XML, and CSS</strong>. eBraille represents the future of accessible digital content for DeafBlind users and is a natural evolution for AI4DeafBlind.org's open-source work.</p>
+        </div>
+      </div>
+
+      <p>Each of these developments extends the reach and utility of the core tables built today. BRF support would allow Indonesian Braille documents to be produced on standard embossers — connecting the pipeline work to the broader ecosystem of Braille literacy materials. eBraille support would bring Indonesian Braille into the future of the web, ensuring that DeafBlind Indonesians can access digital content with the same richness of formatting and structure available to sighted readers.</p>
+
+      <!-- Section 8 -->
+      <h2>Innovation That Serves, Empowerment That Lasts</h2>
+
+      <p>There is a version of assistive technology development in which tools are built once, deployed, and then left to age. AI4DeafBlind.org's approach is different. Building the Indonesian Braille tables for Liblouis is an ongoing commitment — to the DeafBlind students and educators at Helen Keller Indonesia, to the global Liblouis community, and to the principle that language infrastructure for minority and under-resourced language communities deserves the same care, rigor, and continuity that majority-language tools receive.</p>
+
+      <p>The Speech2Braille pipeline brings the teacher's voice to the student. The Braille2Speech pipeline brings the student's voice to the teacher. The Indonesian Braille tables are the linguistic substrate that makes both possible — the invisible layer that ensures that when a finger moves across a Braille cell, meaning is preserved; and when a key is pressed, the right word is spoken.</p>
+
+      <p>This is the work of innovation in service of dignity: careful, documented, collaborative, and open. It does not end when the tables compile without errors. It ends — if it ends — when every DeafBlind Indonesian student has the tools to learn, to communicate, and to be heard.</p>
+
+      <!-- Tags -->
+      <div class="tags" aria-label="Article tags">
+        <span class="tag">Liblouis</span>
+        <span class="tag">Indonesian Braille</span>
+        <span class="tag">Tusing</span>
+        <span class="tag">Grade 1 Braille</span>
+        <span class="tag">Grade 2 Braille</span>
+        <span class="tag">Open Source</span>
+        <span class="tag">DeafBlind</span>
+        <span class="tag">Braille Translation</span>
+        <span class="tag">eBraille</span>
+        <span class="tag">BRF</span>
+        <span class="tag">Perkins Keyboard</span>
+        <span class="tag">Focus 14 Blue</span>
+        <span class="tag">Raspberry Pi 5</span>
+        <span class="tag">Helen Keller Indonesia</span>
+        <span class="tag">WATAP</span>
+        <span class="tag">KreasiTech</span>
+        <span class="tag">AI4DeafBlind</span>
+        <span class="tag">Assistive Technology</span>
+        <span class="tag">WCDB 2027</span>
+        <span class="tag">Stronger Together</span>
+        <span class="tag">Global Collaboration</span>
+      </div>
+
+      <hr class="rule" />
+
+      <section class="author-bio" aria-labelledby="about-author-heading">
+        <h2 id="about-author-heading">About the Author</h2>
+        <div class="author-bio-inner">
+          <img class="author-bio-photo" src="images/kim-fu-lim.jpg" alt="Kim-Fu Lim, founder of AI4DeafBlind.org" width="400" height="400" loading="lazy" decoding="async" />
+          <div class="author-bio-text">
+            <p>Kim-Fu Lim is a Computer Science and Mathematics graduate from the University of Washington with an
+              extensive background in developing mission-critical software systems. His career spans a diverse range of
+              technical domains, including Electronic Design Automation for Data I/O, large-scale customer acquisition and
+              care applications for Accenture's wireless clients, and unified communication servers for Active Voice.
+            </p>
+            <p>He founded iCrescendo post 9/11, specializing in critical infrastructure protection for power substations
+              and water infrastructures. At Amazon, he managed cross-functional teams to deliver solutions for Sellers
+              Onboarding, Fulfillment Centers, AWS Commerce Platform, and Alexa Engine. Most recently, he has focused on
+              developing bidirectional communication smart devices designed specifically for DeafBlind teachers and
+              students, bridging the gap in assistive technology through innovative engineering.</p>
+          </div>
+        </div>
+      </section>
+
+      <p class="article-disclosure">Disclosure: This article was developed with the assistance of AI tools for
+        structural and editorial refinement. The technical concepts and final review were provided by the author.</p>
+
+    </article>
+  </div>
+
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-logo">AI4<span>DeafBlind</span>.org</div>
+  <p>© 2026 AI4DeafBlind. Open-source, open-hearted.</p>
+  <p>Seattle, WA, USA</p>
+</footer>
+
+<script>
+(function () {
+  const nav = document.querySelector('.site-nav');
+  const btn = document.getElementById('nav-menu-button');
+  const list = document.getElementById('primary-nav-list');
+  const articlesBtn = document.getElementById('nav-articles-btn');
+  const articlesWrap = articlesBtn && articlesBtn.closest('.nav-dropdown-wrap');
+  if (!nav || !btn || !list) return;
+  const label = btn.querySelector('.visually-hidden');
+  function isDesktopNav() {
+    return window.matchMedia('(min-width: 901px)').matches;
+  }
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open);
+    if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+    if (articlesBtn && !isDesktopNav()) {
+      articlesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  }
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  list.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      setOpen(false);
+    });
+  });
+  if (articlesWrap && articlesBtn) {
+    articlesWrap.addEventListener('mouseenter', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('mouseleave', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'false');
+    });
+    articlesWrap.addEventListener('focusin', function () {
+      if (isDesktopNav()) articlesBtn.setAttribute('aria-expanded', 'true');
+    });
+    articlesWrap.addEventListener('focusout', function (e) {
+      if (!isDesktopNav()) return;
+      if (!articlesWrap.contains(e.relatedTarget)) {
+        articlesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>
