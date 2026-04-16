@@ -482,8 +482,8 @@
     .hero-right { display: none; }
     #mission, #fieldtest { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 1.5rem; }
     #team, #publications, #contact, #meet-the-team { padding: 5rem 2rem; }
-    .people-grid { grid-template-columns: repeat(2, 1fr); }
-    .people-row-2 { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+    .people-grid { grid-template-columns: 1fr; }
+    .people-row-2 { grid-template-columns: 1fr; max-width: 100%; }
     .tech-section-header { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 2rem 2rem; }
     .tech-specs { grid-template-columns: 1fr; padding: 0 2rem 5rem; }
     .pipeline-block, .pipeline-block.reverse { grid-template-columns: 1fr; direction: ltr; }
