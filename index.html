@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4DeafBlind — Bridging Silence and Darkness</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADdElEQVR4nO2Vz2tcVRTHv+fcO/N+3PfezCTNaJrEloRmGtRqTbYFUdCNmyJdqHRtpf0fhv4Diii6EhHciT8oLhSl2pBNoVb7g8RiQ9GiGFqrTDLJzLx373ExM+ElJiS46WY+cN+7cO/53u859zweMGDAgAEPGdrHWv8t3YeAQPI/dPeKAQAoAHoPY3qXPao39qO/yY4HMSu8dfZN7+NvLkRhKYs7zKLW0sbpc6fXzpx5IxVxeTNANztLRGBiPPf8K+bXm0vB6uofiOODGJ2ebC0sfLbmnIPI1kLkyyxT47UXG63GSZvZJzKbTTjnEmYKAYFzsqaY/9FaLXte8NWF85+/M/f6XAoATIRDE1MvrTWbr9nMzmS2U7XOheheF5h5Qxf0PYZaDjx/frL27PuXLn3UzhtgArlSXLnasZ3j4gSg7n338yOi3lSgWKFY8H4IveBLIpVttNef7qTtl62z3QwJoFxxBQIIICIoFjxMjk9P/7R0+RcArHMVAGu1CIsnQXBEpCE9lZwWgcQ5J632xmyapbMEQuYyQESIyFHXKTERnAioZ0YEVkiICPeHEtPo63HfgEBQTsqfMrMGoESE+2K5wb1GUoqVLcflk4fHJo4WdfFuLhEWATVbGTETNZspvfrCGE084iNNRXme9/3FyxdXejqbBhwAeMrcBCgDoLqud/xyrECgC/ra73/+9sWNWzdu+V7wSc+scyLwi4zZWglpajEzmWDh2gPcXVmHV9Rg6Cu5hJA3QIvLPy4XWC8BYgWS7XQ6IFaxImPM2yJCAHi4NPKBYu0EAhGIV2QcO5LAWocjjxmEvpJWx0IrRimufN3tKrjtyhoADo6MnzUmEd8PxfdD6wdhFgQmC4Iw84PQ+oGRSnn4ar1eL/avhABUh0bfDcNYgiDMPN9kID8NwygF+5kuBDYMjVTKB77tNTNvP7wP1+vf6eqBsffiqNSIokSMiSUMYzEmlihKZKgyMl+rPXW4v79XSnXqVL1YHX70wzgqOWNiieNETBhLHCWSxCU7VKnOz8wcP5Trpc2m+S8EnHjmxOjK6l9T66vNkU7a8b2Ctx7E0Z3btxevO+f6sVuahIhw7Ojc43837s+0N1olB7JxZO4lUeXO9Z+vLO4Wt2Ml9ljfyfiWzPYbt9fPiHNzwS7Nsw3eZmS/cQMGDBjwcPgXN2JS6dUrFXwAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ai4deafblind.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="#hero" class="nav-logo" aria-label="AI4DeafBlind — go to top">AI4<span>DeafBlind</span></a>
+  <button type="button" class="nav-toggle" id="nav-menu-button" aria-expanded="false" aria-controls="primary-nav-list">
+    <span class="nav-toggle-bars" aria-hidden="true"></span>
+    <span class="visually-hidden">Open menu</span>
+  </button>
+  <ul id="primary-nav-list" class="nav-list" role="list">
+    <li><a href="research.html">Research</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="/give">Donate</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+<!-- EVENT BANNER -->
+<section id="event-banner" class="event-banner" aria-label="Digital Braille Library grand opening invitation">
+  <a
+    class="event-banner-link"
+    href="https://docs.google.com/forms/d/e/1FAIpQLSc48r1ciZL2JJ84kw-TSNC01HJfjIWBbKK2D4xQtTThte7PHA/viewform"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="RSVP for the Digital Braille Library grand opening — opens Google Form in a new tab"
+  >
+    <picture>
+      <source media="(max-width: 900px)" srcset="images/invitation-mobile.png">
+      <img
+        class="event-banner-img"
+        src="images/invitation-web.png"
+        alt="Grand Opening of the Digital Braille Library at Helen Keller Indonesia — September 24, 2026, 10:00–11:30 AM WIB. Hosted by AI4DeafBlind and Helen Keller Indonesia. Kindly RSVP by September 21, 2026."
+        width="1600"
+        height="900"
+        loading="eager"
+        decoding="async"
+      >
+    </picture>
+  </a>
+</section>
+
+<!-- HERO -->
+<section id="hero" aria-label="Hero — AI4DeafBlind introduction">
+  <div class="hero-left">
+    <div class="hero-tag" aria-hidden="true">Braillify</div>
+    <h1>Giving access to affordable <em> AI-powered assistive technology </em> for DeafBlind students.</h1>
+    <p class="hero-body">
+      Braillify is the affordable, offline device giving the DeafBlind community the power to hear speech, speak back through typing, and read printed media in Braille.
+    </p>
+    <div class="cta-group">
+      <a href="/give" class="btn-primary">Give Now</a>
+      <a href="research.html" class="btn-outline">Our Research</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-vision">
+      <div class="hero-video" id="hero-video">
+        <button
+          type="button"
+          class="hero-video-trigger"
+          id="hero-video-trigger"
+          aria-haspopup="dialog"
+          aria-controls="hero-video-modal"
+        >
+          <img
+            class="hero-video-poster"
+            src="images/header-1.jpg"
+            alt=""
+            width="800"
+            height="600"
+            loading="eager"
+            decoding="async"
+          >
+          <span class="hero-video-play" aria-hidden="true">
+            <span class="hero-video-play-icon">▶</span>
+          </span>
+          <span class="visually-hidden">Play Braillify video</span>
+        </button>
+      </div>
+      <p class="hero-vision-label">Our vision</p>
+      <p class="hero-vision-quote">"Connection, engagement, and autonomy for DeafBlind students."</p>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<dialog id="hero-video-modal" class="hero-video-modal" aria-label="Braillify video">
+  <div class="hero-video-modal-inner">
+    <button type="button" class="hero-video-modal-close" id="hero-video-modal-close" aria-label="Close video">
+      <span aria-hidden="true">×</span>
+    </button>
+    <video
+      id="hero-video-player"
+      class="hero-video-player"
+      controls
+      playsinline
+      preload="none"
+    >
+      <source src="hero-video.mp4" type="video/mp4">
+      Your browser does not support this video.
+    </video>
+  </div>
+</dialog>
+
+<!-- MISSION -->
+<section id="mission" aria-labelledby="mission-heading">
+  <div class="mission-top">
+    <div class="reveal mission-intro">
+      <div class="section-label" aria-hidden="true">What We Do</div>
+      <h2 id="mission-heading">Inventing to<br><em>empower</em></h2>
+      <aside class="mission-callout" aria-label="Key statistic">
+        <div class="mission-callout-stat">15.8M – 166M</div>
+        <p class="mission-callout-desc">people worldwide live with deafblindness — a vast, largely hidden community whose needs remain critically underserved.</p>
+        <a href="https://wfdb.eu/deafblindness-in-the-world/" target="_blank" rel="noopener noreferrer" class="mission-callout-source">Source: World Federation of the Deafblind (WFDB)</a>
+      </aside>
+    </div>
+    <div class="reveal mission-content">
+      <div class="mission-block">
+        <h3 class="mission-subhead">The Challenge: Connection, engagement, and autonomy for DeafBlind students</h3>
+        <p class="mission-body">
+          The world for the DeafBlind is often artificially constrained by a lack of accessible tools, leaving education entirely dependent on the rare availability of tactile interpreters.
+        </p>
+      </div>
+      <div class="mission-block">
+        <h3 class="mission-subhead">Our Mission</h3>
+        <p class="mission-body">
+          We refuse to let technology leave this community behind. Driven by a call to invent on behalf of DeafBlind individuals, our team built Braillify—a breakthrough ecosystem powered by three custom, lightweight AI models. Operating entirely offline on affordable hardware, Braillify dismantles the barriers to education and autonomy through three core innovations:
+        </p>
+        <ol class="mission-innovations">
+          <li><strong>Real-Time Translation:</strong> Instantly converts a teacher’s spoken lessons into physical Braille.</li>
+          <li><strong>Two-Way Voice:</strong> Allows students to type on QWERTY or Perkins keyboards, instantly generating spoken speech to communicate back.</li>
+          <li><strong>Braille Literacy:</strong> Empowers students to independently scan and read books, magazines, and printed materials.</li>
+        </ol>
+        <a href="research.html" class="btn-primary mission-research-cta">Explore Our Research</a>
+      </div>
+    </div>
+  </div>
+  <div class="reveal mission-milestone">
+    <div class="mission-milestone-text">
+      <h3 class="mission-subhead">The First Milestone: Helen Keller Indonesia</h3>
+      <p class="mission-body">
+        Innovation requires a proving ground. We are currently partnering with Helen Keller Indonesia in Yogyakarta to deploy Braillify where it is needed most. Your support directly funds the manufacturing and deployment of these devices, proving that affordable, AI-driven independence is not a distant dream—it is a reality we can deliver to every student today.
+      </p>
+      <img
+        class="mission-milestone-logo"
+        src="partner%20logos/helen-keller-indonesia.png"
+        alt="Helen Keller Indonesia"
+        width="280"
+        height="120"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+    <div class="mission-carousel" role="region" aria-roledescription="carousel" aria-label="Helen Keller Indonesia field photos">
+      <div class="mission-carousel-viewport">
+        <ul class="mission-carousel-track">
+          <li class="mission-carousel-slide is-active" aria-hidden="false">
+            <figure class="mission-carousel-figure">
+              <img class="mission-carousel-img" src="images/slide-1.jpg" alt="Handaka, a DeafBlind youth, using Braillify" width="800" height="600" loading="lazy" decoding="async">
+              <figcaption class="mission-carousel-caption">"It is so easy to use! When can I buy one? Please keep it affordable." — Handaka, DeafBlind Youth</figcaption>
+            </figure>
+          </li>
+          <li class="mission-carousel-slide" aria-hidden="true">
+            <figure class="mission-carousel-figure">
+              <img class="mission-carousel-img" src="images/slide-2.jpg" alt="Nikita, a Deaf student, using Braillify" width="800" height="600" loading="lazy" decoding="async">
+              <figcaption class="mission-carousel-caption">"It's not hard to use this." — Nikita, Deaf Student</figcaption>
+            </figure>
+          </li>
+          <li class="mission-carousel-slide" aria-hidden="true">
+            <figure class="mission-carousel-figure">
+              <img class="mission-carousel-img" src="images/slide-3.png" alt="Mr. Yoga, a teacher at Helen Keller Indonesia" width="800" height="600" loading="lazy" decoding="async">
+              <figcaption class="mission-carousel-caption">"Seeing our students adapt so quickly to Braillify opens up new possibilities in the classroom." — Mr. Yoga, Teacher</figcaption>
+            </figure>
+          </li>
+          <li class="mission-carousel-slide" aria-hidden="true">
+            <figure class="mission-carousel-figure">
+              <img class="mission-carousel-img" src="images/slide-4.png" alt="Ms. F. Krismartanti, School Principal at Helen Keller Indonesia" width="800" height="600" loading="lazy" decoding="async">
+              <figcaption class="mission-carousel-caption">"Braillify is a monumental step forward for inclusive education at Helen Keller Indonesia." — Ms. F. Krismartanti, School Principal</figcaption>
+            </figure>
+          </li>
+          <li class="mission-carousel-slide" aria-hidden="true">
+            <figure class="mission-carousel-figure">
+              <img class="mission-carousel-img" src="images/slide-5.JPG" alt="Sister Yosefa of Helen Keller Indonesia" width="800" height="600" loading="lazy" decoding="async">
+              <figcaption class="mission-carousel-caption">"Braillify creates a vital bridge for our students to connect, learn, and thrive independently." — Sister Yosefa, Helen Keller Indonesia</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+      <div class="mission-carousel-controls">
+        <button type="button" class="mission-carousel-btn" data-carousel-prev aria-label="Previous photo">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <div class="mission-carousel-dots" role="tablist" aria-label="Choose photo">
+          <button type="button" class="mission-carousel-dot is-active" role="tab" aria-selected="true" aria-label="Show photo 1" data-carousel-dot="0"></button>
+          <button type="button" class="mission-carousel-dot" role="tab" aria-selected="false" aria-label="Show photo 2" data-carousel-dot="1"></button>
+          <button type="button" class="mission-carousel-dot" role="tab" aria-selected="false" aria-label="Show photo 3" data-carousel-dot="2"></button>
+          <button type="button" class="mission-carousel-dot" role="tab" aria-selected="false" aria-label="Show photo 4" data-carousel-dot="3"></button>
+          <button type="button" class="mission-carousel-dot" role="tab" aria-selected="false" aria-label="Show photo 5" data-carousel-dot="4"></button>
+        </div>
+        <button type="button" class="mission-carousel-btn" data-carousel-next aria-label="Next photo">
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="reveal contact-intro">
+    <div class="section-label" aria-hidden="true">Support Braillify</div>
+    <h2 id="contact-heading">Let's build<br>this <em>together</em></h2>
+    <p class="contact-lead">
+      AI4DeafBlind is made of volunteers that use open-sourced AI, which means that every dollar you donate is maximized to help provide the hardware needed to give a DeafBlind student access to Braillify. 
+    </p>
+  </div>
+
+  <div class="reveal contact-support">
+    <h3 class="contact-support-heading">Our fundraising goal</h3>
+    <div class="donation-goal">
+      <div class="donation-amount">$10,000</div>
+      <h4 class="donation-title">Digital Braille Library for DeafBlind Students at Helen Keller Indonesia</h4>
+      <p class="donation-desc">
+        Help us reach $10K to deploy 5 Braillify units at Helen Keller Indonesia — giving DeafBlind students the hardware they need for speech-to-Braille, typing-to-speech, and Braille literacy.
+      </p>
+      <p class="donation-detail">
+        In order to build a complete system, Braillify — which consists of a scanner, NVIDIA Jetson Nano, and Braille Display Orbit 20 — we would need to raise USD $1,600 per unit. The goal is 1 Braillify per DeafBlind student.
+      </p>
+      <a href="/give" class="btn-primary donation-cta">Give Today</a>
+    </div>
+  </div>
+
+  <p class="reveal contact-involve">
+    Want to get involved?
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmnP5cYSkjuuAj1AGhKD4Cj5qEFUGH7TU25dMYUXwCNuSMYg/viewform" target="_blank" rel="noopener noreferrer" class="contact-email">Let’s get in touch</a>
+  </p>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners" aria-labelledby="partners-heading">
+  <div class="reveal partners-intro">
+    <div class="section-label" aria-hidden="true">Partners</div>
+    <h2 id="partners-heading">Thank you <em>to our</em> partners</h2>
+    <p class="partners-lead">
+      Braillify exists because of the organizations that lend expertise, hardware, and field access — from classrooms in Yogyakarta to labs across the Pacific Northwest.
+    </p>
+  </div>
+  <div class="reveal partner-logos-banner" aria-label="Partner organizations">
+    <div class="partner-logos-row" role="list" aria-label="Field and technology partners">
+      <figure class="partner-logo-item" role="listitem">
+        <img src="partner%20logos/helen-keller-indonesia.png" alt="" width="400" height="160" loading="lazy" decoding="async">
+        <figcaption class="partner-logo-name">Helen Keller Indonesia</figcaption>
+      </figure>
+      <figure class="partner-logo-item" role="listitem">
+        <img src="partner%20logos/kreasitech.png" alt="" width="400" height="160" loading="lazy" decoding="async">
+        <figcaption class="partner-logo-name">KreasiTech</figcaption>
+      </figure>
+      <figure class="partner-logo-item" role="listitem">
+        <img src="partner%20logos/martech-mission-site-logo.svg" alt="" width="400" height="160" loading="lazy" decoding="async">
+        <figcaption class="partner-logo-name">Martech Mission</figcaption>
+      </figure>
+    </div>
+    <div class="partner-logos-row" role="list" aria-label="University and accessibility partners">
+      <figure class="partner-logo-item" role="listitem">
+        <img src="partner%20logos/university-of-washington.png" alt="" width="400" height="160" loading="lazy" decoding="async">
+        <figcaption class="partner-logo-name">University of Washington</figcaption>
+      </figure>
+      <figure class="partner-logo-item" role="listitem">
+        <img src="partner%20logos/washington-state-university.png" alt="" width="400" height="160" loading="lazy" decoding="async">
+        <figcaption class="partner-logo-name">Washington State University</figcaption>
+      </figure>
+      <figure class="partner-logo-item" role="listitem">
+        <img src="partner%20logos/watap.png" alt="" width="400" height="160" loading="lazy" decoding="async">
+        <figcaption class="partner-logo-name">Washington Assistive Technology Act Program</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- BOARD OF ADVISORS -->
+<section id="board" aria-labelledby="board-heading">
+  <div class="reveal">
+    <div class="section-label" aria-hidden="true">Leadership</div>
+    <h2 id="board-heading">Board of <em>Advisors</em></h2>
+    <p class="board-lead">
+      Our advisors bring deep experience across technology, finance, marketing, and accessibility — guiding Braillify from research through real-world deployment.
+    </p>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="board-row reveal">
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/kimfulim/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Kim-Fu Lim on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/kim-fu-lim.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Founder</div>
+          <div class="person-name">Kim-Fu Lim</div>
+          <div class="person-edu">Ex-Accenture · Ex-Amazon · AI4DeafBlind.org</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/shih-lien-lu-7486ab/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Dr. Shih-Lien (Linus) Lu on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/shih-lien-linus-lu.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Chief Technology Officer</div>
+          <div class="person-name">Dr. Shih-Lien (Linus) Lu</div>
+          <div class="person-edu">IEEE Life Fellow · AI · Architecture · Security</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/roderick-macqueen-436b094/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Roderick MacQueen on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/roderick-macqueen.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Technical Advisor</div>
+          <div class="person-name">Roderick MacQueen</div>
+          <div class="person-edu">CTO, CallMiner · Software &amp; Infrastructure</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="board-row reveal">
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/brian-abeel-11012026/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Brian Abeel on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/brian-abeel.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Chief Financial Officer</div>
+          <div class="person-name">Brian Abeel</div>
+          <div class="person-edu">Ex-Boeing · Finance &amp; Nonprofit Board Leadership</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/priscilla-mageropoulos/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Priscilla Mageropoulos on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/priscilla-mageropoulos.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Chief Marketing Officer</div>
+          <div class="person-name">Priscilla Mageropoulos</div>
+          <div class="person-edu">Creative Director · Brand &amp; Digital Marketing</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/richard-ladner-5641064/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Richard Ladner on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/richard-ladner.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Technical Advisor, Assistive Technology</div>
+          <div class="person-name">Richard Ladner</div>
+          <div class="person-edu">Professor Emeritus, UW · Accessibility Pioneer</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MEET THE TEAM -->
+<section id="meet-the-team" aria-labelledby="meet-team-heading">
+  <div class="reveal">
+    <div class="section-label" aria-hidden="true">The People</div>
+    <h2 id="meet-team-heading">Meet the <em>team</em></h2>
+  </div>
+
+  <!-- Row 1: 4 cards -->
+  <div class="people-grid reveal">
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/kamahori/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Keisuke Kamahori on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/keisuke-kamahori.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">CS PhD Student · University of Washington</div>
+          <div class="person-name">Keisuke Kamahori</div>
+          <div class="person-edu">Computer Systems and Architecture for LLMs</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/jonathanychu/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Jonathan Chu on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/jonathan-chu.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">CSE Intern</div>
+          <div class="person-name">Jonathan Chu</div>
+          <div class="person-edu">Native ML Deployment</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/manila-kristin/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Manila Kristin on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/manila-kristin.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">KreasiTech Founder</div>
+          <div class="person-name">Manila Kristin</div>
+          <div class="person-edu">Fullstack Developer · Accessibility Advocate</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/rian-rama-nugraha-977a02131/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Rian Rama Nugraha on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/rian-rama-nugraha.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">KreasiTech Fullstack Developer</div>
+          <div class="person-name">Rian Rama Nugraha</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Row 2: 4 cards -->
+  <div class="people-row-2 reveal">
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/wafikulin/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Wafik Ulinnuha on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/wafik-ulinnuha.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">KreasiTech Fullstack Developer</div>
+          <div class="person-name">Wafik Ulinnuha</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/raymondtsai61931/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Raymond Tsai on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/raymond-tsai.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Software and Hardware Integration</div>
+          <div class="person-name">Raymond Tsai</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/sarah-chu18/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Sarah Chu on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/sarah-chu.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">UX Designer</div>
+          <div class="person-name">Sarah Chu</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/chouanthony/" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Anthony Chou on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/anthony-chou.jpg" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Marketing</div>
+          <div class="person-name">Anthony Chou</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Row 3: 3 cards, same card size as rows above, centered -->
+  <div class="people-row-3 reveal">
+
+    <div class="person-card">
+      <a href="https://www.linkedin.com/in/tesalonika-theresia" target="_blank" rel="noopener noreferrer" class="person-card-link" aria-label="Tesalonika Theresia on LinkedIn">
+        <span class="person-accent" aria-hidden="true"></span>
+        <div class="person-avatar">
+          <img src="images/tesa-theresia.png" alt="" width="400" height="400" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div class="person-info">
+          <div class="person-role">Social Media Specialist</div>
+          <div class="person-name">Tesalonika Theresia</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="person-card">
+      <div class="person-card-static">
+        <div class="person-avatar" aria-hidden="true">
+          <span class="person-avatar-inner"></span>
+        </div>
+        <div class="person-info">
+          <div class="person-role">Social Media Coordinator</div>
+          <div class="person-name">Wahyu Vivacious Nurallah</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-logo">AI4<span>DeafBlind</span>.org</div>
+    <p>© 2026 AI4DeafBlind. Open-source, open-hearted.</p>
+    <p>Seattle, WA, USA</p>
+  </div>
+  <p class="footer-legal">AI4DeafBlind is a fiscally sponsored project of FSA, a 501(c)(3) nonprofit organization. Contributions to AI4DeafBlind are tax‑deductible to the extent permitted by law.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Intersection Observer — reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Carousels (hero + mission)
+(function () {
+  function initCarousel(carousel) {
+    const track = carousel.querySelector('.mission-carousel-track');
+    const slides = Array.from(carousel.querySelectorAll('.mission-carousel-slide'));
+    const dots = Array.from(carousel.querySelectorAll('[data-carousel-dot]'));
+    const prevBtn = carousel.querySelector('[data-carousel-prev]');
+    const nextBtn = carousel.querySelector('[data-carousel-next]');
+    if (!track || !slides.length) return;
+    let index = 0;
+
+    function goTo(nextIndex) {
+      index = (nextIndex + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      slides.forEach(function (slide, i) {
+        const active = i === index;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+      dots.forEach(function (dot, i) {
+        const active = i === index;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); });
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(Number(dot.getAttribute('data-carousel-dot')));
+      });
+    });
+  }
+
+  document.querySelectorAll('.mission-carousel').forEach(initCarousel);
+})();
+
+// Hero video — match left text block height, open lightbox on play
+(function () {
+  const left = document.querySelector('.hero-left');
+  const videoWrap = document.getElementById('hero-video');
+  const trigger = document.getElementById('hero-video-trigger');
+  const modal = document.getElementById('hero-video-modal');
+  const player = document.getElementById('hero-video-player');
+  const closeBtn = document.getElementById('hero-video-modal-close');
+  if (!left || !videoWrap || !trigger || !modal || !player) return;
+
+  function syncHeroVideoHeight() {
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      videoWrap.style.height = '';
+      return;
+    }
+    const heading = left.querySelector('h1');
+    const body = left.querySelector('.hero-body');
+    if (!heading || !body) return;
+    const top = heading.getBoundingClientRect().top;
+    const bottom = body.getBoundingClientRect().bottom;
+    const height = Math.max(180, Math.round(bottom - top));
+    videoWrap.style.height = height + 'px';
+  }
+
+  function openModal() {
+    if (typeof modal.showModal === 'function') {
+      modal.showModal();
+    } else {
+      modal.setAttribute('open', '');
+    }
+    player.play().catch(function () {});
+  }
+
+  function closeModal() {
+    player.pause();
+    player.currentTime = 0;
+    if (typeof modal.close === 'function') {
+      modal.close();
+    } else {
+      modal.removeAttribute('open');
+    }
+    trigger.focus();
+  }
+
+  trigger.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('close', function () {
+    player.pause();
+    player.currentTime = 0;
+  });
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.open) closeModal();
+  });
+
+  syncHeroVideoHeight();
+  window.addEventListener('resize', syncHeroVideoHeight);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncHeroVideoHeight);
+  }
+})();
+
+// Mobile navigation — keyboard accessible toggle
+(function () {
+  const nav = document.querySelector('.site-nav');
+  const btn = document.getElementById('nav-menu-button');
+  const list = document.getElementById('primary-nav-list');
+  if (!nav || !btn || !list) return;
+  const label = btn.querySelector('.visually-hidden');
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open);
+    if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+  }
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  list.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      setOpen(false);
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>

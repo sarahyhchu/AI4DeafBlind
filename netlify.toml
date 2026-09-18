@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/give"
+  to = "https://donate.mazloweb.com/donate/digital-braille-library-for-deafblind-students"
+  status = 302
+  force = true
