@@ -1096,6 +1096,15 @@
     max-width: 48rem;
     margin: 0;
   }
+  .footer-legal a {
+    color: var(--gold-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+  .footer-legal a:hover {
+    color: var(--cream);
+  }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
