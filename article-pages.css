@@ -351,6 +351,34 @@
   color: var(--ink);
   font-size: 0.98rem;
 }
+.article-page .highlight-box p + p {
+  margin-top: 0.75rem;
+}
+
+.article-page .reason-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+.article-page .reason-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.85rem;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+.article-page .reason-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
 
 .article-page .highlight-box .highlight-box-photos {
   display: grid;
